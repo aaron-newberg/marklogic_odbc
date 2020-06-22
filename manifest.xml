@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<connector-plugin class='marklogic_odbc' superclass='odbc' plugin-version='0.0.0' name='MarkLogic' version='20.1' min-version-tableau='2019.4'>
+  <vendor-information>
+      <company name="MarkLogic"/>
+      <support-link url="https://help.marklogic.com/"/>
+      <driver-download-link url="https://developer.marklogic.com/products/odbc/"/>
+  </vendor-information>
+  <connection-customization class="marklogic_odbc" enabled="true" version="10.4">
+    <vendor name="vendor"/>
+    <driver name="driver"/>
+    <customizations>
+      <customization name="CAP_SELECT_INTO" value="no"/>
+      <customization name="CAP_SELECT_TOP_INTO" value="yes"/>
+      <customization name="CAP_CREATE_TEMP_TABLES" value="no"/>
+      <customization name="CAP_QUERY_GROUP_BY_BOOL" value="yes"/>
+      <customization name="CAP_QUERY_GROUP_BY_DEGREE" value="yes"/>
+      <customization name="CAP_QUERY_SUBQUERIES" value="yes"/>
+      <customization name="CAP_QUERY_TOP_N" value="yes"/>
+      <customization name="CAP_QUERY_WHERE_FALSE_METADATA" value="no"/>
+      <customization name="CAP_QUERY_SUBQUERIES_WITH_TOP" value="yes"/>
+      <customization name="CAP_QUERY_ALLOW_PARTIAL_AGGREGATION" value="yes"/>
+      <customization name="CAP_SUPPORTS_SPLIT_FROM_LEFT" value="yes"/>
+      <customization name="CAP_SUPPORTS_SPLIT_FROM_RIGHT" value="yes"/>
+      <customization name="CAP_QUERY_JOIN_ACROSS_SCHEMAS" value="yes"/>
+      <customization name='CAP_ODBC_CURSOR_FORWARD_ONLY' value='yes'/>
+      <customization name='CAP_ODBC_CURSOR_STATIC' value='no'/>
+      <customization name='CAP_ODBC_FETCH_BUFFERS_SIZE_FIXED' value='yes'/>
+      <customization name='CAP_ODBC_FETCH_BUFFERS_SIZE_MASSIVE' value='yes'/>
+      <customization name='CAP_ODBC_FETCH_ABORT_FORCE_CANCEL_STATEMENT' value='yes'/>
+    </customizations>
+  </connection-customization>
+  <connection-dialog file='connection-dialog.tcd'/>
+  <connection-resolver file="connectionResolver.tdr"/>
+  <dialect file='dialect.tdd'/>
+</connector-plugin>
