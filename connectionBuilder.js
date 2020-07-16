@@ -8,8 +8,6 @@
     params["UID"] = attr[connectionHelper.attributeUsername];
     params["PWD"] = attr[connectionHelper.attributePassword];
     params["BOOLSASCHAR"] = "1";
-    params["UseDeclareFetch"] = "1";
-    params["Fetch"] = "2048";
 
     if (attr[connectionHelper.attributeSSLMode] == "require")
     {
