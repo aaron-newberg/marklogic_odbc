@@ -1372,6 +1372,7 @@
       <formula>EXTRACT(YEAR FROM %1)</formula>
       <argument type='date' />
     </function>
+    
     <!--
       date-function
       Doesn't require a group. Can contain multiple formulas
@@ -1504,7 +1505,7 @@
     <date-function name='DATENAME' return-type='str'>
       <formula part='year'>CAST(DATEPART(&apos;yy&apos;,%2) AS CHAR)</formula>
       <formula part='quarter'>CAST(DATEPART(&apos;qq&apos;,%2) AS CHAR)</formula>
-      <formula part='month'>CAST(DATEPART(&apos;mm&apos;,%2) AS CHAR)</formula>
+      <formula part='month'>MONTHNAME(CAST(%2 AS TIMESTAMP))</formula>
       <formula part='dayofyear'>XDMP_YEARDAY_FROM_DATE(CAST(%2 AS DATE))</formula>
       <formula part='day'>CAST(CAST(TRUNCATE(EXTRACT(DAY FROM CAST(%2 AS TIMESTAMP)),0) AS INTEGER) AS CHAR)</formula>
       <formula part='weekday'>DAYNAME(CAST(%2 AS TIMESTAMP))</formula>
@@ -1519,9 +1520,9 @@
       <formula>CAST(CAST(%2 AS TIMESTAMP), &apos;%1&apos;)</formula>
       <formula part='year'>CAST(DATEPART(&apos;yy&apos;,%2) AS CHAR)</formula>
       <formula part='quarter'>CAST(DATEPART(&apos;qq&apos;,%2) AS CHAR)</formula>
-      <formula part='month'>CAST(DATEPART(&apos;mm&apos;,%2) AS CHAR)</formula>
+      <formula part='month'>MONTHNAME(CAST(%2 AS DATE))</formula>
       <formula part='dayofyear'>XDMP_YEARDAY_FROM_DATE(CAST(%2 AS DATE))</formula>
-      <formula part='day'>CAST(CAST(TRUNCATE(EXTRACT(DAY FROM CAST(%2 AS TIMESTAMP)),0) AS INTEGER) AS CHAR)</formula>
+      <formula part='day'>DAYNAME(CAST(%2 AS DATE))</formula>
       <formula part='weekday'>DAYNAME(CAST(%2 AS DATE))</formula>
       <formula part='week'>CAST(WEEK(CAST(%2 AS DATE)) AS CHAR)</formula>
       <formula part='hour'>CAST(CAST(TRUNCATE(EXTRACT(HOUR FROM CAST(CAST(%2 AS DATE) AS TIMESTAMP)),0) AS INTEGER) AS CHAR)</formula>
@@ -1589,7 +1590,7 @@
       <argument type='localstr' />
     </date-function>
     <date-function name='DATETRUNC' return-type='datetime'>
-      <formula part='year'>SELECT CAST(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS TIMESTAMP)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS TIMESTAMP) AS DATE)) AS TIMESTAMP)</formula>
+      <formula part='year'>CAST(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS TIMESTAMP)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS TIMESTAMP) AS DATE)) AS TIMESTAMP)</formula>
       <formula part='quarter'>TIMESTAMPADD(SQL_TSI_MONTH,CAST(TRUNCATE((3 * (CAST(TRUNCATE(QUARTER(CAST(%2 AS TIMESTAMP)),0) AS INTEGER) - 1)),0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS TIMESTAMP)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS TIMESTAMP) AS TIMESTAMP)))</formula>
       <formula part='month'>CAST(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (EXTRACT(DAY FROM CAST(%2 AS TIMESTAMP)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS TIMESTAMP) AS DATE)) AS TIMESTAMP)</formula>
       <formula part='dayofyear'>CAST(CAST(CAST(%2 AS TIMESTAMP) AS DATE) AS TIMESTAMP)</formula>
