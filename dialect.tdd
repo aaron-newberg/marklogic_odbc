@@ -1606,7 +1606,7 @@
       <argument type='localstr' />
       <argument type='date' />
     </date-function>
-    <date-function name='DATEPART'>
+    <date-function name='DATEPART' return-type='int'>
       <formula part='year'>CAST(YEAR(CAST(%2 AS TIMESTAMP)) AS INTEGER)</formula>
       <formula part='quarter'>CAST(QUARTER(CAST(%2 AS TIMESTAMP)) AS INTEGER)</formula>
       <formula part='month'>CAST(MONTH(CAST(%2 AS TIMESTAMP)) AS INTEGER)</formula>
@@ -1621,7 +1621,7 @@
       <argument type='datetime' />
       <argument type='localstr' />
     </date-function>
-    <date-function name='DATEPART'>
+    <date-function name='DATEPART' return-type='int'>
       <formula part='year'>CAST(YEAR(CAST(%2 AS DATE)) AS INTEGER)</formula>
       <formula part='quarter'>CAST(QUARTER(CAST(%2 AS DATE)) AS INTEGER)</formula>
       <formula part='month'>CAST(MONTH(CAST(%2 AS DATE)) AS INTEGER)</formula>
@@ -1664,7 +1664,7 @@
       <argument type='localstr' />
       <argument type='date' />
     </date-function>
-    <date-function name='DATETRUNC'>
+    <date-function name='DATETRUNC' return-type='datetime'>
       <formula part='year'>CASE %2 WHEN NULL THEN NULL ELSE CAST(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS TIMESTAMP)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS TIMESTAMP) AS DATE)) AS TIMESTAMP) END</formula>
       <formula part='quarter'>CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_MONTH,CAST(TRUNCATE((3 * (CAST(TRUNCATE(QUARTER(CAST(%2 AS TIMESTAMP)),0) AS INTEGER) - 1)),0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS TIMESTAMP)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS TIMESTAMP) AS TIMESTAMP))) END</formula>
       <formula part='month'>CASE %2 WHEN NULL THEN NULL ELSE CAST(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (EXTRACT(DAY FROM CAST(%2 AS TIMESTAMP)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS TIMESTAMP) AS DATE)) AS TIMESTAMP) END</formula>
@@ -1679,7 +1679,7 @@
       <argument type='datetime' />
       <argument type='localstr' />
     </date-function>
-    <date-function name='DATETRUNC'>
+    <date-function name='DATETRUNC' return-type='datetime'>
       <formula part='year'>CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS DATE)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS DATE) AS DATE)) END</formula>
       <formula part='quarter'>CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_MONTH,CAST(TRUNCATE((3 * (CAST(TRUNCATE(QUARTER(CAST(%2 AS DATE)),0) AS INTEGER) - 1)),0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS DATE)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS DATE) AS DATE))) END</formula>
       <formula part='month'>CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (EXTRACT(DAY FROM CAST(%2 AS DATE)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS DATE) AS DATE)) END</formula>
