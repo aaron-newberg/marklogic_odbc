@@ -7,7 +7,6 @@
     params["DATABASE"] = attr[connectionHelper.attributeDatabase];
     params["UID"] = attr[connectionHelper.attributeUsername];
     params["PWD"] = attr[connectionHelper.attributePassword];
-    params["BOOLSASCHAR"] = "1";
 
     if (attr[connectionHelper.attributeSSLMode] == "require")
     {

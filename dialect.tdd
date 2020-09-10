@@ -9,19 +9,19 @@
       <argument type='int' />
     </function>
     <function group='numeric' name='ACOS' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE ACOS(%1) END</formula>
+      <formula>ACOS(%1)</formula>
       <argument type='real' />
     </function>
     <function group='numeric' name='ASIN' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE ASIN(%1) END</formula>
+      <formula>ASIN(%1)</formula>
       <argument type='real' />
     </function>
     <function group='numeric' name='ATAN' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE ATAN(%1) END</formula>
+      <formula>ATAN(%1)</formula>
       <argument type='real' />
     </function>
     <function group='numeric' name='ATAN2' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE ATAN2(%1,%2) END) END</formula>
+      <formula>ATAN2(%1,%2)</formula>
       <argument type='real' />
       <argument type='real' />
     </function>
@@ -38,24 +38,24 @@
       <argument type='int' />
     </function>
     <function group='numeric' name='COS' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE COS(%1) END</formula>
+      <formula>COS(%1)</formula>
       <argument type='real' />
     </function>
     <function group='numeric' name='COT' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE COT(%1) END</formula>
+      <formula>CASE WHEN %1 = 0 THEN NULL ELSE COT(%1) END</formula>
       <argument type='real' />
     </function>
     <function group='numeric' name='DEGREES' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE DEGREES(%1) END</formula>
+      <formula>DEGREES(%1)</formula>
       <argument type='real' />
     </function>
     <function group='numeric' name='DIV' return-type='int'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE(CASE WHEN %2 = 0 THEN NULL ELSE ( %1 / %2 ) END) END) END</formula>
+      <formula>CASE WHEN %2 = 0 THEN NULL ELSE ( %1 / %2 ) END</formula>
       <argument type='int' />
       <argument type='int' />
     </function>
     <function group='numeric' name='EXP' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE EXP(%1) END</formula>
+      <formula>EXP(%1)</formula>
       <argument type='real' />
     </function>
     <function group='numeric' name='FLOOR' return-type='real'>
@@ -81,20 +81,20 @@
       <argument type='real' />
     </function>
     <function group='numeric' name='LN' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE WHEN %1 &lt; 0 THEN NULL ELSE LOG(%1) END) END</formula>
+      <formula>CASE WHEN %1 &lt;= 0 THEN NULL ELSE LOG(CAST(%1 AS DOUBLE)) END</formula>
       <argument type='real' />
     </function>
     <function group='numeric' name='LOG' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE WHEN %1 &lt; 0 THEN NULL ELSE LOG10(%1) END) END</formula>
+      <formula>CASE WHEN %1 &lt;= 0 THEN NULL ELSE LOG10(%1) END</formula>
       <argument type='real' />
     </function>
     <function group='numeric' name='LOG' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE (CASE WHEN %1 &lt; 0 THEN NULL ELSE LOG10(%1) / LOG10(%2) END) END) END</formula>
+      <formula>CASE WHEN %1 &lt;= 0 THEN NULL ELSE (CASE WHEN %2 &lt; 0 THEN NULL ELSE LOG10(%1) / LOG10(%2) END) END</formula>
       <argument type='real' />
       <argument type='int' />
     </function>
     <function group='numeric' name='LOG2' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE WHEN %1 &gt; 0 THEN LOG10(%1) / LOG10(2) ELSE NULL END) END</formula>
+      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE WHEN %1 &gt;= 0 THEN LOG10(%1) / LOG10(2) ELSE NULL END) END</formula>
       <argument type='real' />
     </function>
     <function group='numeric' name='MAX' return-type='real'>
@@ -156,30 +156,30 @@
       <formula>PI()</formula>
     </function>
     <function group='numeric' name='POWER' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE POWER(%1,%2) END) END</formula>
+      <formula>POWER(%1,%2)</formula>
       <argument type='real' />
       <argument type='real' />
     </function>
     <function group='numeric' name='POWER' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE POWER(%1,%2) END) END</formula>
+      <formula>POWER(%1,%2)</formula>
       <argument type='real' />
       <argument type='int' />
     </function>
     <function group='numeric' name='POWER' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE POWER(%1,%2) END) END</formula>
+      <formula>POWER(%1,%2)</formula>
       <argument type='int' />
       <argument type='int' />
     </function>
     <function group='numeric' name='RADIANS' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE RADIANS(%1) END</formula>
+      <formula>RADIANS(%1)</formula>
       <argument type='real' />
     </function>
     <function group='numeric' name='ROUND' return-type='real'>
-      <formula>CAST(ROUND(%1) AS NUMERIC)</formula>
+      <formula>ROUND(%1)</formula>
       <argument type='real' />
     </function>
     <function group='numeric' name='ROUND' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE TRUNC(%1,%2) END) END</formula>
+      <formula>TRUNC(%1,%2)</formula>
       <argument type='real' />
       <argument type='int' />
     </function>
@@ -188,27 +188,27 @@
       <argument type='real' />
     </function>
     <function group='numeric' name='SIGN' return-type='int'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE SIGN(%1) END</formula>
+      <formula>SIGN(%1)</formula>
       <argument type='real' />
     </function>
     <function group='numeric' name='SIN' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE SIN(%1) END</formula>
+      <formula>SIN(%1)</formula>
       <argument type='real' />
     </function>
     <function group='numeric' name='SQRT' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %1 &lt; 0 THEN NULL ELSE SQRT(CAST(%1 AS NUMERIC)) END) END</formula>
+      <formula>CASE WHEN %1 &lt; 0 THEN NULL ELSE SQRT(CAST(%1 AS NUMERIC)) END</formula>
       <argument type='real' />
     </function>
     <function group='numeric' name='SQUARE' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE POWER(%1,2) END</formula>
+      <formula>POWER(%1,2)</formula>
       <argument type='real' />
     </function>
     <function group='numeric' name='SQUARE' return-type='int'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE POWER(CAST(%1 AS NUMERIC),2) END</formula>
+      <formula>POWER(CAST(%1 AS NUMERIC),2)</formula>
       <argument type='int' />
     </function>
     <function group='numeric' name='TAN' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE TAN(%1) END</formula>
+      <formula>TAN(%1)</formula>
       <argument type='real' />
     </function>
     <function group='numeric' name='TRUNC' return-type='real'>
@@ -224,7 +224,7 @@
       <argument type='int' />
     </function>
     <function group='string' name='ASCII' return-type='int'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE ASCII(SUBSTRING(%1,1,1)) END</formula>
+      <formula>ASCII(SUBSTRING(%1,1,1))</formula>
       <argument type='str' />
     </function>
     <function group='string' name='CHAR' return-type='str'>
@@ -257,7 +257,7 @@
       <argument type='str' />
     </function>
     <function group='string' name='FIND' return-type='int'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE STRPOS(%1, %2) END) END</formula>
+      <formula>STRPOS(%1, %2)</formula>
       <argument type='str' />
       <argument type='str' />
     </function>
@@ -274,25 +274,25 @@
       <argument type='int' />
     </function>
     <function group='string' name='LEFT' return-type='str'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE LEFT(%1,(CASE WHEN %2 &gt;= 0 THEN %2 ELSE 0 END)) END) END</formula>
+      <formula>LEFT(%1,(CASE WHEN %2 &gt; 0 THEN %2 ELSE NULL END))</formula>
       <argument type='str' />
       <argument type='real' />
     </function>
     <function group='string' name='LEFT' return-type='str'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE LEFT(%1,(CASE WHEN %2 &gt;= 0 THEN %2 ELSE 0 END)) END) END</formula>
+      <formula>LEFT(%1,(CASE WHEN %2 &gt; 0 THEN %2 ELSE NULL END))</formula>
       <argument type='str' />
       <argument type='int' />
     </function>
     <function group='string' name='LEN' return-type='int'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE CHAR_LENGTH(%1) END</formula>
+      <formula>CHAR_LENGTH(%1)</formula>
       <argument type='str' />
     </function>
     <function group='string' name='LOWER' return-type='str'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE LOWER(%1) END</formula>
+      <formula>LOWER(%1)</formula>
       <argument type='str' />
     </function>
     <function group='string' name='LTRIM' return-type='str'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE LTRIM(%1) END</formula>
+      <formula>LTRIM(%1)</formula>
       <argument type='str' />
     </function>
     <function group='string' name='MAX' return-type='str'>
@@ -334,25 +334,25 @@
       <argument type='str' />
     </function>
     <function group='string' name='RIGHT' return-type='str'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE (CASE WHEN %2 &gt;= 0 THEN RIGHT(%1,%2) ELSE NULL END) END) END</formula>
+      <formula>RIGHT(%1,(CASE WHEN %2 &gt;= 0 THEN %2 ELSE NULL END))</formula>
       <argument type='str' />
       <argument type='real' />
     </function>
     <function group='string' name='RIGHT' return-type='str'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE (CASE WHEN %2 &gt;= 0 THEN RIGHT(%1,%2) ELSE NULL END) END) END</formula>
+      <formula>RIGHT(%1,(CASE WHEN %2 &gt;= 0 THEN %2 ELSE NULL END))</formula>
       <argument type='str' />
       <argument type='int' />
     </function>
     <function group='string' name='RTRIM' return-type='str'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE RTRIM(%1) END</formula>
+      <formula>RTRIM(%1)</formula>
       <argument type='str' />
     </function>
     <function group='string' name='SPACE' return-type='str'>
-      <formula>(CASE %1 WHEN NULL THEN NULL ELSE (CASE WHEN CAST(%1 AS INT) &gt;= 0 THEN SPACE(CAST(%1 AS INT)) ELSE NULL END) END)</formula>
+      <formula>CASE WHEN CAST(%1 AS INT) &gt;= 0 THEN SPACE(CAST(%1 AS INT)) ELSE NULL END</formula>
       <argument type='real' />
     </function>
     <function group='string' name='SPACE' return-type='str'>
-      <formula>(CASE %1 WHEN NULL THEN NULL ELSE (CASE WHEN CAST(%1 AS INT) &gt;= 0 THEN SPACE(CAST(%1 AS INT)) ELSE NULL END) END)</formula>
+      <formula>CASE WHEN CAST(%1 AS INT) &gt;= 0 THEN SPACE(CAST(%1 AS INT)) ELSE NULL END</formula>
       <argument type='int' />
     </function>
     <function group='string' name='SPLIT' return-type='str'>
@@ -362,19 +362,16 @@
       <argument type='localint' />
     </function>
     <function group='string' name='STARTSWITH' return-type='bool'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE (STRPOS(%1, %2) = 1) END) END</formula>
+      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE FN_STARTS_WITH(%1,%2) END) END</formula>
       <argument type='str' />
       <argument type='str' />
     </function>
-    <!--<remove-function name='TLD'>
-      <argument type='str' />
-    </remove-function>-->
     <function group='string' name='TRIM' return-type='str'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE LTRIM(RTRIM(CAST(%1 AS CHAR))) END</formula>
+      <formula>LTRIM(RTRIM(CAST(%1 AS CHAR)))</formula>
       <argument type='str' />
     </function>
     <function group='string' name='UPPER' return-type='str'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE UCASE(%1) END</formula>
+      <formula>UCASE(%1)</formula>
       <argument type='str' />
     </function>
     <function group='string' name='REGEXP_MATCH' return-type='bool'>
@@ -383,15 +380,15 @@
       <argument type='str' />
     </function>
     <function group='cast' name='DATE' return-type='date'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNC(%1,0) AS INT),date '1900-01-01') END</formula>
+      <formula>TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNC(%1,0) AS INT),date '1900-01-01')</formula>
       <argument type='real' />
     </function>
     <function group='cast' name='DATE' return-type='date'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_DAY,%1,date '1900-01-01') END</formula>
+      <formula>TIMESTAMPADD(SQL_TSI_DAY,%1,date '1900-01-01')</formula>
       <argument type='int' />
     </function>
     <function group='cast' name='DATE' return-type='date'>
-      <formula>CAST(CAST(%1 AS TIMESTAMP) AS DATE)</formula>
+      <formula>CAST(%1 AS DATE)</formula>
       <argument type='str' />
     </function>
     <function group='cast' name='DATE' return-type='date'>
@@ -399,15 +396,15 @@
       <argument type='datetime' />
     </function>
     <function group='cast' name='DATE' return-type='date'>
-      <formula>CAST(%1 AS DATE)</formula>
+      <formula>%1</formula>
       <argument type='date' />
     </function>
     <function group='cast' name='DATETIME' return-type='datetime'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_FRAC_SECOND,CAST(TRUNCATE((%1 * 24 * 60 * 60 - CAST(TRUNCATE(%1 * 24 * 60 * 60,0) AS INTEGER))*1000000000,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_SECOND,CAST(TRUNCATE((%1 * 24 * 60 - CAST(TRUNCATE(%1 * 24 * 60,0) AS INTEGER)) * 60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_MINUTE,CAST(TRUNCATE((%1 * 24 - CAST(TRUNCATE(%1 * 24,0) AS INTEGER)) * 60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_HOUR,CAST(TRUNCATE((%1 - CAST(TRUNCATE(%1,0) AS INTEGER)) * 24,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE(%1,0) AS INTEGER),timestamp '1900-01-01 00:00:00'))))) END</formula>
+      <formula>TIMESTAMPADD(SQL_TSI_FRAC_SECOND,CAST(TRUNCATE((%1 * 24 * 60 * 60 - CAST(TRUNCATE(%1 * 24 * 60 * 60,0) AS INTEGER))*1000000000,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_SECOND,CAST(TRUNCATE((%1 * 24 * 60 - CAST(TRUNCATE(%1 * 24 * 60,0) AS INTEGER)) * 60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_MINUTE,CAST(TRUNCATE((%1 * 24 - CAST(TRUNCATE(%1 * 24,0) AS INTEGER)) * 60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_HOUR,CAST(TRUNCATE((%1 - CAST(TRUNCATE(%1,0) AS INTEGER)) * 24,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE(%1,0) AS INTEGER),timestamp '1900-01-01 00:00:00')))))</formula>
       <argument type='real' />
     </function>
     <function group='cast' name='DATETIME' return-type='datetime'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_FRAC_SECOND,CAST(TRUNCATE((%1 * 24 * 60 * 60 - CAST(TRUNCATE(%1 * 24 * 60 * 60,0) AS INTEGER))*1000000000,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_SECOND,CAST(TRUNCATE((%1 * 24 * 60 - CAST(TRUNCATE(%1 * 24 * 60,0) AS INTEGER)) * 60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_MINUTE,CAST(TRUNCATE((%1 * 24 - CAST(TRUNCATE(%1 * 24,0) AS INTEGER)) * 60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_HOUR,CAST(TRUNCATE((%1 - CAST(TRUNCATE(%1,0) AS INTEGER)) * 24,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE(%1,0) AS INTEGER),timestamp '1900-01-01 00:00:00'))))) END</formula>
+      <formula>TIMESTAMPADD(SQL_TSI_FRAC_SECOND,CAST(TRUNCATE((%1 * 24 * 60 * 60 - CAST(TRUNCATE(%1 * 24 * 60 * 60,0) AS INTEGER))*1000000000,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_SECOND,CAST(TRUNCATE((%1 * 24 * 60 - CAST(TRUNCATE(%1 * 24 * 60,0) AS INTEGER)) * 60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_MINUTE,CAST(TRUNCATE((%1 * 24 - CAST(TRUNCATE(%1 * 24,0) AS INTEGER)) * 60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_HOUR,CAST(TRUNCATE((%1 - CAST(TRUNCATE(%1,0) AS INTEGER)) * 24,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE(%1,0) AS INTEGER),timestamp '1900-01-01 00:00:00')))))</formula>
       <argument type='int' />
     </function>
     <function group='cast' name='DATETIME' return-type='datetime'>
@@ -415,19 +412,19 @@
       <argument type='str' />
     </function>
     <function group='cast' name='DATETIME' return-type='datetime'>
-      <formula>CAST(%1 as TIMESTAMP)</formula>
+      <formula>%1</formula>
       <argument type='datetime' />
     </function>
     <function group='cast' name='DATETIME' return-type='datetime'>
-      <formula>CAST(CAST(%1 AS DATE) AS TIMESTAMP)</formula>
+      <formula>CAST(%1 AS TIMESTAMP)</formula>
       <argument type='date' />
     </function>
     <function group='cast' name='FLOAT' return-type='real'>
-      <formula>CAST(CAST(%1 AS INTEGER) AS NUMERIC)</formula>
+      <formula>CAST(%1 AS NUMERIC)</formula>
       <argument type='bool' />
     </function>
     <function group='cast' name='FLOAT' return-type='real'>
-      <formula>CAST(%1 AS NUMERIC)</formula>
+      <formula>%1</formula>
       <argument type='real' />
     </function>
     <function group='cast' name='FLOAT' return-type='real'>
@@ -439,11 +436,11 @@
       <argument type='str' />
     </function>
     <function group='cast' name='FLOAT' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE CAST(DATEDIFF('dd', '1900-01-01', %1) AS FLOAT) END</formula>
+      <formula>CAST(DATEDIFF('dd', '1900-01-01', %1) AS FLOAT)</formula>
       <argument type='datetime' />
     </function>
     <function group='cast' name='FLOAT' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE CAST(DATEDIFF('dd', '1900-01-01', %1) AS FLOAT) END</formula>
+      <formula>CAST(DATEDIFF('dd', '1900-01-01', %1) AS FLOAT)</formula>
       <argument type='date' />
     </function>
     <function group='cast' name='INT' return-type='int'>
@@ -455,7 +452,7 @@
       <argument type='real' />
     </function>
     <function group='cast' name='INT' return-type='int'>
-      <formula>CAST(%1 AS INT)</formula>
+      <formula>%1</formula>
       <argument type='int' />
     </function>
     <function group='cast' name='INT' return-type='int'>
@@ -463,15 +460,15 @@
       <argument type='str' />
     </function>
     <function group='cast' name='INT' return-type='int'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE CAST(DATEDIFF('dd', '1900-01-01 01:01:01', %1) AS INTEGER) END</formula>
+      <formula>CAST(DATEDIFF('dd', '1900-01-01 01:01:01', %1) AS INTEGER)</formula>
       <argument type='datetime' />
     </function>
     <function group='cast' name='INT' return-type='int'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE CAST(DATEDIFF('dd', '1900-01-01', %1) AS INTEGER) END</formula>
+      <formula>CAST(DATEDIFF('dd', '1900-01-01', %1) AS INTEGER)</formula>
       <argument type='date' />
     </function>
     <function group='cast' name='MAKEDATE' return-type='date'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE CAST(CONCAT(%1,CASE WHEN %2 >= 10 THEN '-' ELSE '-0' END,%2,CASE WHEN %3 >= 10 THEN '-' ELSE '-0' END,%3) AS DATE) END) END) END</formula>
+      <formula>CAST(CONCAT(%1,CASE WHEN %2 >= 10 THEN '-' ELSE '-0' END,%2,CASE WHEN %3 >= 10 THEN '-' ELSE '-0' END,%3) AS DATE)</formula>
       <argument type='int' />
       <argument type='int' />
       <argument type='int' />
@@ -481,7 +478,7 @@
       <argument type='int' />
     </function>
     <function group='cast' name='STR' return-type='str'>
-      <formula>CAST(%1 as CHAR)</formula>
+      <formula>CAST(CAST(%1 as INT) AS CHAR)</formula>
       <argument type='bool' />
     </function>
     <function group='cast' name='STR' return-type='str'>
@@ -493,15 +490,15 @@
       <argument type='int' />
     </function>
     <function group='cast' name='STR' return-type='str'>
-      <formula>CAST(%1 as CHAR)</formula>
+      <formula>%1</formula>
       <argument type='str' />
     </function>
     <function group='cast' name='STR' return-type='str'>
-      <formula>%1</formula>
+      <formula>CAST(%1 AS CHAR)</formula>
       <argument type='datetime' />
     </function>
     <function group='cast' name='STR' return-type='str'>
-      <formula>%1</formula>
+      <formula>CAST(%1 AS CHAR)</formula>
       <argument type='date' />
     </function>
     <function group='logical' name='IFNULL' return-type='bool'>
@@ -530,12 +527,12 @@
       <argument type='datetime' />
     </function>
     <function group='logical' name='IFNULL' return-type='datetime'>
-      <formula>COALESCE(%1, CASE %2 WHEN NULL THEN NULL ELSE CAST(%2 as TIMESTAMP) END))</formula>
+      <formula>COALESCE(%1,CAST(%2 as TIMESTAMP)))</formula>
       <argument type='datetime' />
       <argument type='date' />
     </function>
     <function group='logical' name='IFNULL' return-type='datetime'>
-      <formula>COALESCE(CASE %1 WHEN NULL THEN NULL ELSE CAST(%1 as TIMESTAMP) END, %2)</formula>
+      <formula>COALESCE(CAST(%1 as TIMESTAMP), %2)</formula>
       <argument type='date' />
       <argument type='datetime' />
     </function>
@@ -853,12 +850,12 @@
       <argument type='bool' />
     </function>
     <function group='operator' name='!=' return-type='bool'>
-      <formula>(%1 AND NOT %2 OR NOT %1 AND %2)</formula>
+      <formula>%1 != %2</formula>
       <argument type='bool' />
       <argument type='bool' />
     </function>
     <function group='operator' name='!=' return-type='bool'>
-      <formula>(%1 AND %2 = 0 OR NOT %1 AND %2 &lt;&gt; 0)</formula>
+      <formula>%1 != CAST(%2 AS BOOLEAN)</formula>
       <argument type='bool' />
       <argument type='int' />
     </function>
@@ -868,7 +865,7 @@
       <argument type='real' />
     </function>
     <function group='operator' name='!=' return-type='bool'>
-      <formula>(%1 = 0 AND %2 OR %1 &lt;&gt; 0 AND NOT %2)</formula>
+      <formula>CAST(%1 AS BOOLEAN) != %2</formula>
       <argument type='int' />
       <argument type='bool' />
     </function>
@@ -908,12 +905,12 @@
       <argument type='date' />
     </function>
     <function group='operator' name='%' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE MATH_FMOD(%1,%2) END) END</formula>
+      <formula>MOD(%1,%2)</formula>
       <argument type='real' />
       <argument type='real' />
     </function>
     <function group='operator' name='%' return-type='int'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE MATH_FMOD(%1,%2) END) END</formula>
+      <formula>MOD(%1,%2)</formula>
       <argument type='int' />
       <argument type='int' />
     </function>
@@ -953,37 +950,32 @@
       <argument type='int' />
     </function>
     <function group='operator' name='+' return-type='str'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE CONCAT(%1,%2) END) END</formula>
+      <formula>CONCAT(%1,%2)</formula>
       <argument type='str' />
       <argument type='str' />
     </function>
     <function group='operator' name='+' return-type='datetime'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_FRAC_SECOND,CAST(TRUNCATE((%2 * 24 * 60 * 60 - CAST(TRUNCATE(%2 * 24 * 60 * 60,0) AS INTEGER))*1000000000,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_SECOND,CAST(TRUNCATE((%2 * 24 * 60 - CAST(TRUNCATE(%2 * 24 * 60,0) AS INTEGER)) * 60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_MINUTE,CAST(TRUNCATE((%2 * 24 - CAST(TRUNCATE(%2 * 24,0) AS INTEGER)) * 60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_HOUR,CAST(TRUNCATE((%2 - CAST(TRUNCATE(%2,0) AS INTEGER)) * 24,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE(%2,0) AS INTEGER),CAST(%1 AS TIMESTAMP)))))) END) END</formula>
+      <formula>TIMESTAMPADD(SQL_TSI_FRAC_SECOND,CAST(TRUNCATE((%2 * 24 * 60 * 60 - CAST(TRUNCATE(%2 * 24 * 60 * 60,0) AS INTEGER))*1000000000,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_SECOND,CAST(TRUNCATE((%2 * 24 * 60 - CAST(TRUNCATE(%2 * 24 * 60,0) AS INTEGER)) * 60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_MINUTE,CAST(TRUNCATE((%2 * 24 - CAST(TRUNCATE(%2 * 24,0) AS INTEGER)) * 60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_HOUR,CAST(TRUNCATE((%2 - CAST(TRUNCATE(%2,0) AS INTEGER)) * 24,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE(%2,0) AS INTEGER),CAST(%1 AS TIMESTAMP))))))</formula>
       <argument type='datetime' />
       <argument type='real' />
     </function>
     <function group='operator' name='+' return-type='datetime'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_DAY,%2,CAST(%1 AS TIMESTAMP)) END) END</formula>
+      <formula>TIMESTAMPADD(SQL_TSI_DAY,%2,%1)</formula>
       <argument type='datetime' />
       <argument type='int' />
     </function>
     <function group='operator' name='+' return-type='datetime'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_FRAC_SECOND,CAST(TRUNCATE((%2 * 24 * 60 * 60 - CAST(TRUNCATE(%2 * 24 * 60 * 60,0) AS INTEGER))*1000000000,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_SECOND,CAST(TRUNCATE((%2 * 24 * 60 - CAST(TRUNCATE(%2 * 24 * 60,0) AS INTEGER)) * 60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_MINUTE,CAST(TRUNCATE((%2 * 24 - CAST(TRUNCATE(%2 * 24,0) AS INTEGER)) * 60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_HOUR,CAST(TRUNCATE((%2 - CAST(TRUNCATE(%2,0) AS INTEGER)) * 24,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE(%2,0) AS INTEGER),CAST(CAST(%1 AS DATE) AS TIMESTAMP)))))) END) END</formula>
+      <formula>TIMESTAMPADD(SQL_TSI_FRAC_SECOND,CAST(TRUNCATE((%2 * 24 * 60 * 60 - CAST(TRUNCATE(%2 * 24 * 60 * 60,0) AS INTEGER))*1000000000,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_SECOND,CAST(TRUNCATE((%2 * 24 * 60 - CAST(TRUNCATE(%2 * 24 * 60,0) AS INTEGER)) * 60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_MINUTE,CAST(TRUNCATE((%2 * 24 - CAST(TRUNCATE(%2 * 24,0) AS INTEGER)) * 60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_HOUR,CAST(TRUNCATE((%2 - CAST(TRUNCATE(%2,0) AS INTEGER)) * 24,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE(%2,0) AS INTEGER),CAST(%1 AS TIMESTAMP))))))</formula>
       <argument type='date' />
       <argument type='real' />
     </function>
     <function group='operator' name='+' return-type='date'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE CAST(TIMESTAMPADD(SQL_TSI_FRAC_SECOND,CAST(TRUNCATE((%2 * 24 * 60 * 60 - CAST(TRUNCATE(%2 * 24 * 60 * 60,0) AS INTEGER))*1000000000,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_SECOND,CAST(TRUNCATE((%2 * 24 * 60 - CAST(TRUNCATE(%2 * 24 * 60,0) AS INTEGER)) * 60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_MINUTE,CAST(TRUNCATE((%2 * 24 - CAST(TRUNCATE(%2 * 24,0) AS INTEGER)) * 60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_HOUR,CAST(TRUNCATE((%2 - CAST(TRUNCATE(%2,0) AS INTEGER)) * 24,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE(%2,0) AS INTEGER),CAST(CAST(%1 AS DATE) AS TIMESTAMP)))))) AS DATE) END) END</formula>
-      <argument type='date' />
-      <argument type='real' />
-    </function>
-    <function group='operator' name='+' return-type='date'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_DAY,%2,CAST(%1 AS DATE)) END) END</formula>
+      <formula>TIMESTAMPADD(SQL_TSI_DAY,%2,%1)</formula>
       <argument type='date' />
       <argument type='int' />
     </function>
     <function group='operator' name='-' return-type='real'>
-      <formula>(-%1)</formula>
+      <formula>-1 * %1</formula>
       <argument type='real' />
     </function>
     <function group='operator' name='-' return-type='real'>
@@ -992,17 +984,17 @@
       <argument type='real' />
     </function>
     <function group='operator' name='-' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE (TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%1 AS TIMESTAMP)) + (EXTRACT(HOUR FROM CAST(%1 AS TIMESTAMP)) - EXTRACT(HOUR FROM CAST(%2 AS TIMESTAMP)) + (EXTRACT(MINUTE FROM CAST(%1 AS TIMESTAMP)) - EXTRACT(MINUTE FROM CAST(%2 AS TIMESTAMP)) + (EXTRACT(SECOND FROM CAST(%1 AS TIMESTAMP)) - EXTRACT(SECOND FROM CAST(%2 AS TIMESTAMP))) / 60.0) / 60.0) / 24.0) END ) END</formula>
+      <formula>TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%1 AS TIMESTAMP)) + (EXTRACT(HOUR FROM CAST(%1 AS TIMESTAMP)) - EXTRACT(HOUR FROM CAST(%2 AS TIMESTAMP)) + (EXTRACT(MINUTE FROM CAST(%1 AS TIMESTAMP)) - EXTRACT(MINUTE FROM CAST(%2 AS TIMESTAMP)) + (EXTRACT(SECOND FROM CAST(%1 AS TIMESTAMP)) - EXTRACT(SECOND FROM CAST(%2 AS TIMESTAMP))) / 60.0) / 60.0) / 24.0</formula>
       <argument type='datetime' />
       <argument type='datetime' />
     </function>
     <function group='operator' name='-' return-type='real'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE (TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS DATE),CAST(%1 AS TIMESTAMP)) + (EXTRACT(HOUR FROM CAST(%1 AS TIMESTAMP)) - EXTRACT(HOUR FROM CAST(%2 AS DATE)) + (EXTRACT(MINUTE FROM CAST(%1 AS TIMESTAMP)) - EXTRACT(MINUTE FROM CAST(%2 AS DATE)) + (EXTRACT(SECOND FROM CAST(%1 AS TIMESTAMP)) - EXTRACT(SECOND FROM CAST(%2 AS DATE))) / 60.0) / 60.0) / 24.0) END ) END</formula>
+      <formula>TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS DATE),CAST(%1 AS TIMESTAMP)) + (EXTRACT(HOUR FROM CAST(%1 AS TIMESTAMP)) - EXTRACT(HOUR FROM CAST(%2 AS DATE)) + (EXTRACT(MINUTE FROM CAST(%1 AS TIMESTAMP)) - EXTRACT(MINUTE FROM CAST(%2 AS DATE)) + (EXTRACT(SECOND FROM CAST(%1 AS TIMESTAMP)) - EXTRACT(SECOND FROM CAST(%2 AS DATE))) / 60.0) / 60.0) / 24.0</formula>
       <argument type='datetime' />
       <argument type='date' />
     </function>
     <function group='operator' name='-' return-type='int'>
-      <formula>(-%1)</formula>
+      <formula>-1 * %1</formula>
       <argument type='int' />
     </function>
     <function group='operator' name='-' return-type='int'>
@@ -1011,32 +1003,27 @@
       <argument type='int' />
     </function>
     <function group='operator' name='-' return-type='int'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE DATEDIFF('dd', CAST(%2 as DATE), CAST(%1 as DATE)) END) END</formula>
+      <formula>DATEDIFF('dd', CAST(%2 as DATE), CAST(%1 as DATE))</formula>
       <argument type='date' />
       <argument type='date' />
     </function>
     <function group='operator' name='-' return-type='datetime'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_FRAC_SECOND,CAST(TRUNCATE((%2 * 24 * 60 * 60 - CAST(TRUNCATE(%2 * 24 * 60 * 60,0) AS INTEGER))*-1000000000,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_SECOND,CAST(TRUNCATE((%2 * 24 * 60 - CAST(TRUNCATE(%2 * 24 * 60,0) AS INTEGER)) * -60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_MINUTE,CAST(TRUNCATE((%2 * 24 - CAST(TRUNCATE(%2 * 24,0) AS INTEGER)) * -60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_HOUR,CAST(TRUNCATE((%2 - CAST(TRUNCATE(%2,0) AS INTEGER)) * -24,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE(-%2,0) AS INTEGER),CAST(%1 AS TIMESTAMP)))))) END ) END</formula>
+      <formula>TIMESTAMPADD(SQL_TSI_FRAC_SECOND,CAST(TRUNCATE((%2 * 24 * 60 * 60 - CAST(TRUNCATE(%2 * 24 * 60 * 60,0) AS INTEGER))*-1000000000,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_SECOND,CAST(TRUNCATE((%2 * 24 * 60 - CAST(TRUNCATE(%2 * 24 * 60,0) AS INTEGER)) * -60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_MINUTE,CAST(TRUNCATE((%2 * 24 - CAST(TRUNCATE(%2 * 24,0) AS INTEGER)) * -60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_HOUR,CAST(TRUNCATE((%2 - CAST(TRUNCATE(%2,0) AS INTEGER)) * -24,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE(-%2,0) AS INTEGER),CAST(%1 AS TIMESTAMP))))))</formula>
       <argument type='datetime' />
       <argument type='real' />
     </function>
     <function group='operator' name='-' return-type='datetime'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_DAY,-%2,CAST(%1 AS TIMESTAMP)) END) END</formula>
+      <formula>TIMESTAMPADD(SQL_TSI_DAY,-%2,CAST(%1 AS TIMESTAMP))</formula>
       <argument type='datetime' />
       <argument type='int' />
     </function>
     <function group='operator' name='-' return-type='datetime'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_FRAC_SECOND,CAST(TRUNCATE((%2 * 24 * 60 * 60 - CAST(TRUNCATE(%2 * 24 * 60 * 60,0) AS INTEGER))*-1000000000,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_SECOND,CAST(TRUNCATE((%2 * 24 * 60 - CAST(TRUNCATE(%2 * 24 * 60,0) AS INTEGER)) * -60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_MINUTE,CAST(TRUNCATE((%2 * 24 - CAST(TRUNCATE(%2 * 24,0) AS INTEGER)) * -60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_HOUR,CAST(TRUNCATE((%2 - CAST(TRUNCATE(%2,0) AS INTEGER)) * -24,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE(%2,0) AS INTEGER),CAST(CAST(%1 AS TIMESTAMP) AS TIMESTAMP)))))) END) END</formula>
+      <formula>TIMESTAMPADD(SQL_TSI_FRAC_SECOND,CAST(TRUNCATE((%2 * 24 * 60 * 60 - CAST(TRUNCATE(%2 * 24 * 60 * 60,0) AS INTEGER))*-1000000000,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_SECOND,CAST(TRUNCATE((%2 * 24 * 60 - CAST(TRUNCATE(%2 * 24 * 60,0) AS INTEGER)) * -60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_MINUTE,CAST(TRUNCATE((%2 * 24 - CAST(TRUNCATE(%2 * 24,0) AS INTEGER)) * -60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_HOUR,CAST(TRUNCATE((%2 - CAST(TRUNCATE(%2,0) AS INTEGER)) * -24,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE(-%2,0) AS INTEGER),CAST(%1 AS TIMESTAMP))))))</formula>
       <argument type='date' />
       <argument type='real' />
     </function>
     <function group='operator' name='-' return-type='date'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE CAST(TIMESTAMPADD(SQL_TSI_FRAC_SECOND,CAST(TRUNCATE((%2 * 24 * 60 * 60 - CAST(TRUNCATE(%2 * 24 * 60 * 60,0) AS INTEGER))*-1000000000,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_SECOND,CAST(TRUNCATE((%2 * 24 * 60 - CAST(TRUNCATE(%2 * 24 * 60,0) AS INTEGER)) * -60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_MINUTE,CAST(TRUNCATE((%2 * 24 - CAST(TRUNCATE(%2 * 24,0) AS INTEGER)) * -60,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_HOUR,CAST(TRUNCATE((%2 - CAST(TRUNCATE(%2,0) AS INTEGER)) * -24,0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE(%2,0) AS INTEGER),CAST(CAST(%1 AS DATE) AS TIMESTAMP)))))) AS DATE) END) END</formula>
-      <argument type='date' />
-      <argument type='real' />
-    </function>
-    <function group='operator' name='-' return-type='date'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE (CASE %2 WHEN NULL THEN NULL ELSE DATEADD('dd',-%2,%1) END) END</formula>
+      <formula>DATEADD('dd',-1 * %2,%1)</formula>
       <argument type='date' />
       <argument type='int' />
     </function>
@@ -1068,6 +1055,11 @@
     <function group='operator' name='&lt;' return-type='bool'>
       <formula>(%1 &lt; %2)</formula>
       <argument type='str' />
+      <argument type='str' />
+    </function>
+    <function group='operator' name='&lt;=' return-type='bool'>
+      <formula>(%1 &lt;= %2)</formula>
+      <argument type='int' />
       <argument type='str' />
     </function>
     <function group='operator' name='&lt;' return-type='bool'>
@@ -1141,12 +1133,12 @@
       <argument type='date' />
     </function>
     <function group='operator' name='==' return-type='bool'>
-      <formula>(%1 AND %2 OR NOT %1 AND NOT %2)</formula>
+      <formula>CAST(%1 AS BOOLEAN) = CAST(%2 AS BOOLEAN)</formula>
       <argument type='bool' />
       <argument type='bool' />
     </function>
     <function group='operator' name='==' return-type='bool'>
-      <formula>(%1 AND CAST(%2 AS BOOLEAN) &lt;&gt; 0 OR NOT %1 AND CAST(%2 AS BOOLEAN)= 0)</formula>
+      <formula>%1 = CAST(%2 AS BOOLEAN)</formula>
       <argument type='bool' />
       <argument type='int' />
     </function>
@@ -1156,7 +1148,7 @@
       <argument type='real' />
     </function>
     <function group='operator' name='==' return-type='bool'>
-      <formula>(%1 &lt;&gt; 0 AND %2 OR %1 = 0 AND NOT %2)</formula>
+      <formula>CAST(%1 AS BOOLEAN) = %2</formula>
       <argument type='int' />
       <argument type='bool' />
     </function>
@@ -1246,6 +1238,11 @@
       <argument type='str' />
     </function>
     <function group='operator' name='&gt;=' return-type='bool'>
+      <formula>(%1 &gt;= %2)</formula>
+      <argument type='int' />
+      <argument type='str' />
+    </function>
+    <function group='operator' name='&gt;=' return-type='bool'>
       <formula>(CAST(%1 AS TIMESTAMP) &gt;= CAST(%2 AS TIMESTAMP))</formula>
       <argument type='str' />
       <argument type='datetime' />
@@ -1324,25 +1321,25 @@
       <argument type='date' />
     </function>
     <function group='date' name='MONTH' return-type='int'>
-      <formula>DATEPART('month',CAST(%1 AS TIMESTAMP))</formula>
+      <formula>DATEPART('month',%1)</formula>
       <argument type='datetime' />
     </function>
     <function group='date' name='MONTH' return-type='int'>
-      <formula>DATEPART('month',CAST(%1 AS DATE))</formula>
+      <formula>DATEPART('month',%1)</formula>
       <argument type='date' />
     </function>
     <function group='date' name='NOW' return-type='datetime'>
       <formula>FN_CURRENT_DATETIME()</formula>
     </function>
     <function group='date' name='TIMESTAMP_TO_USEC' return-type='int'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_SECOND,CAST('1970-01-01 00:00:00' AS TIMESTAMP),%1) END</formula>
+      <formula>TIMESTAMPDIFF(SQL_TSI_SECOND,CAST('1970-01-01 00:00:00' AS TIMESTAMP),%1)</formula>
       <argument type='datetime' />
     </function>
     <function group='date' name='TODAY' return-type='date'>
       <formula>CAST(FN_CURRENT_DATETIME() AS DATE)</formula>
     </function>
     <function group='date' name='USEC_TO_TIMESTAMP' return-type='datetime'>
-      <formula>CASE %1 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_SECOND,%1,CAST('1970-01-01 00:00:00' AS TIMESTAMP)) END</formula>
+      <formula>TIMESTAMPADD(SQL_TSI_SECOND,%1,CAST('1970-01-01 00:00:00' AS TIMESTAMP))</formula>
       <argument type='int' />
     </function>
     <function group='date' name='YEAR' return-type='int'>
@@ -1361,154 +1358,155 @@
       will use the generic (no part attribute) formula.
     -->
     <date-function name='DATEADD' return-type='datetime'>
-      <formula>CASE %3 WHEN NULL THEN NULL ELSE DATEADD(&apos;%1&apos;,ROUND(%2),%3) END</formula>
-      <formula part='year'>CASE %3 WHEN NULL THEN NULL ELSE DATEADD(&apos;year&apos;,ROUND(%2),%3) END</formula>
-      <formula part='quarter'>CASE %3 WHEN NULL THEN NULL ELSE DATEADD(&apos;quarter&apos;,ROUND(%2),%3) END</formula>
-      <formula part='month'>CASE %3 WHEN NULL THEN NULL ELSE DATEADD(&apos;month&apos;,ROUND(%2),%3) END</formula>
-      <formula part='dayofyear'>CASE %3 WHEN NULL THEN NULL ELSE DATEADD(&apos;dayofyear&apos;,ROUND(%2),%3) END</formula>
-      <formula part='day'>CASE %3 WHEN NULL THEN NULL ELSE DATEADD(&apos;day&apos;,ROUND(%2),%3) END</formula>
-      <formula part='weekday'>CASE %3 WHEN NULL THEN NULL ELSE DATEADD(&apos;day&apos;,ROUND(%2),%3) END</formula>
-      <formula part='week'>CASE %3 WHEN NULL THEN NULL ELSE DATEADD(&apos;week&apos;,ROUND(%2),%3) END</formula>
-      <formula part='hour'>CASE %3 WHEN NULL THEN NULL ELSE DATEADD(&apos;hour&apos;,ROUND(%2),%3) END</formula>
-      <formula part='minute'>CASE %3 WHEN NULL THEN NULL ELSE DATEADD(&apos;minute&apos;,ROUND(%2),%3) END</formula>
-      <formula part='second'>CASE %3 WHEN NULL THEN NULL ELSE DATEADD(&apos;second&apos;,ROUND(%2),%3) END</formula>
+      <formula>DATEADD(&apos;%1&apos;,ROUND(%2),%3)</formula>
+      <formula part='year'>DATEADD(&apos;year&apos;,ROUND(%2),%3)</formula>
+      <formula part='quarter'>DATEADD(&apos;quarter&apos;,ROUND(%2),%3)</formula>
+      <formula part='month'>DATEADD(&apos;month&apos;,ROUND(%2),%3)</formula>
+      <formula part='dayofyear'>DATEADD(&apos;dayofyear&apos;,ROUND(%2),%3)</formula>
+      <formula part='day'>DATEADD(&apos;day&apos;,ROUND(%2),%3)</formula>
+      <formula part='weekday'>DATEADD(&apos;day&apos;,ROUND(%2),%3)</formula>
+      <formula part='week'>DATEADD(&apos;week&apos;,ROUND(%2),%3)</formula>
+      <formula part='hour'>DATEADD(&apos;hour&apos;,ROUND(%2),%3)</formula>
+      <formula part='minute'>DATEADD(&apos;minute&apos;,ROUND(%2),%3)</formula>
+      <formula part='second'>DATEADD(&apos;second&apos;,ROUND(%2),%3)</formula>
       <argument type='localstr' />
       <argument type='real' />
       <argument type='datetime' />
     </date-function>
     <date-function name='DATEADD' return-type='datetime'>
-      <formula>CASE %3 WHEN NULL THEN NULL ELSE DATEADD(&apos;%1&apos;,%2,%3) END</formula>
-      <formula part='year'>CASE %3 WHEN NULL THEN NULL ELSE DATEADD(&apos;year&apos;,%2,%3) END</formula>
-      <formula part='quarter'>CASE %3 WHEN NULL THEN NULL ELSE DATEADD(&apos;quarter&apos;,%2,%3) END</formula>
-      <formula part='month'>CASE %3 WHEN NULL THEN NULL ELSE DATEADD(&apos;month&apos;,%2,%3) END</formula>
-      <formula part='dayofyear'>CASE %3 WHEN NULL THEN NULL ELSE DATEADD(&apos;dayofyear&apos;,%2,%3) END</formula>
-      <formula part='day'>CASE %3 WHEN NULL THEN NULL ELSE DATEADD(&apos;day&apos;,%2,%3) END</formula>
-      <formula part='weekday'>CASE %3 WHEN NULL THEN NULL ELSE DATEADD(&apos;day&apos;,%2,%3) END</formula>
-      <formula part='week'>CASE %3 WHEN NULL THEN NULL ELSE DATEADD(&apos;week&apos;,%2,%3) END</formula>
-      <formula part='hour'>CASE %3 WHEN NULL THEN NULL ELSE DATEADD(&apos;hour&apos;,%2,%3) END</formula>
-      <formula part='minute'>CASE %3 WHEN NULL THEN NULL ELSE DATEADD(&apos;minute&apos;,%2,%3) END</formula>
-      <formula part='second'>CASE %3 WHEN NULL THEN NULL ELSE DATEADD(&apos;second&apos;,%2,%3) END</formula>
+      <formula>DATEADD(&apos;%1&apos;,%2,%3)</formula>
+      <formula part='year'>DATEADD(&apos;year&apos;,%2,%3)</formula>
+      <formula part='quarter'>DATEADD(&apos;quarter&apos;,%2,%3)</formula>
+      <formula part='month'>DATEADD(&apos;month&apos;,%2,%3)</formula>
+      <formula part='dayofyear'>DATEADD(&apos;dayofyear&apos;,%2,%3)</formula>
+      <formula part='day'>DATEADD(&apos;day&apos;,%2,%3)</formula>
+      <formula part='weekday'>DATEADD(&apos;day&apos;,%2,%3)</formula>
+      <formula part='week'>DATEADD(&apos;week&apos;,%2,%3)</formula>
+      <formula part='hour'>DATEADD(&apos;hour&apos;,%2,%3)</formula>
+      <formula part='minute'>DATEADD(&apos;minute&apos;,%2,%3)</formula>
+      <formula part='second'>DATEADD(&apos;second&apos;,%2,%3)</formula>
       <argument type='localstr' />
       <argument type='int' />
       <argument type='datetime' />
     </date-function>
     <date-function name='DATEDIFF' return-type='int'>
-      <formula part='year'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_YEAR,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END) END</formula>
-      <formula part='quarter'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_QUARTER,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END) END</formula>
-      <formula part='month'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_MONTH,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='dayofyear'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='day'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='weekday'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='week'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_WEEK,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='hour'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_HOUR,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='minute'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_MINUTE,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='second'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_SECOND,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
+      <formula part='year'>TIMESTAMPDIFF(SQL_TSI_YEAR,%2,%3)</formula>
+      <formula part='quarter'>TIMESTAMPDIFF(SQL_TSI_QUARTER,%2,%3)</formula>
+      <formula part='month'>TIMESTAMPDIFF(SQL_TSI_MONTH,%2,%3)</formula>
+      <formula part='dayofyear'>TIMESTAMPDIFF(SQL_TSI_DAY,%2,%3)</formula>
+      <formula part='day'>TIMESTAMPDIFF(SQL_TSI_DAY,%2,%3)</formula>
+      <formula part='weekday'>TIMESTAMPDIFF(SQL_TSI_DAY,%2,%3)</formula>
+      <formula part='week'>CAST( TRUNCATE( TIMESTAMPDIFF(SQL_TSI_DAY, TIMESTAMPADD(SQL_TSI_DAY,(-1 * CAST( MOD((7 +  DAYOFWEEK(%2)), 7) AS INT)),CAST(%2 AS DATE)), TIMESTAMPADD(SQL_TSI_DAY,(-1 * CAST( MOD((7 +  DAYOFWEEK(%3)), 7) AS INT)),CAST(%3 AS DATE))) / 7,0) AS INTEGER)</formula>
+      <formula part='hour'>TIMESTAMPDIFF(SQL_TSI_HOUR,%2,%3)</formula>
+      <formula part='minute'>TIMESTAMPDIFF(SQL_TSI_MINUTE,%2,%3)</formula>
+      <formula part='second'>TIMESTAMPDIFF(SQL_TSI_SECOND,%2,%3)</formula>
       <argument type='localstr' />
       <argument type='datetime' />
       <argument type='datetime' />
     </date-function>
     <date-function name='DATEDIFF' return-type='int'>
-      <formula part='year'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_YEAR,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END) END</formula>
-      <formula part='quarter'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_QUARTER,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END) END</formula>
-      <formula part='month'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_MONTH,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='dayofyear'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='day'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='weekday'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='week'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_WEEK,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='hour'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_HOUR,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='minute'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_MINUTE,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='second'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_SECOND,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
+      <formula part='year'>TIMESTAMPDIFF(SQL_TSI_YEAR,%2,%3)</formula>
+      <formula part='quarter'>TIMESTAMPDIFF(SQL_TSI_QUARTER,%2,%3)</formula>
+      <formula part='month'>TIMESTAMPDIFF(SQL_TSI_MONTH,%2,%3)</formula>
+      <formula part='dayofyear'>TIMESTAMPDIFF(SQL_TSI_DAY,%2,%3)</formula>
+      <formula part='day'>TIMESTAMPDIFF(SQL_TSI_DAY,%2,%3)</formula>
+      <formula part='weekday'>TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP))</formula>
+      <formula part='week'>TIMESTAMPDIFF(SQL_TSI_WEEK,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP))</formula>
+      <formula part='hour'>TIMESTAMPDIFF(SQL_TSI_HOUR,%2,%3)</formula>
+      <formula part='minute'>TIMESTAMPDIFF(SQL_TSI_MINUTE,%2,%3)</formula>
+      <formula part='second'>TIMESTAMPDIFF(SQL_TSI_SECOND,%2,%3)</formula>
       <argument type='localstr' />
       <argument type='datetime' />
       <argument type='date' />
     </date-function>
     <date-function name='DATEDIFF' return-type='int'>
-      <formula part='year'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_YEAR,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END) END</formula>
-      <formula part='quarter'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_QUARTER,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END) END</formula>
-      <formula part='month'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_MONTH,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='dayofyear'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='day'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='weekday'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='week'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_WEEK,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='hour'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_HOUR,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='minute'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_MINUTE,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='second'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_SECOND,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
+      <formula part='year'>TIMESTAMPDIFF(SQL_TSI_YEAR,%2,%3)</formula>
+      <formula part='quarter'>TIMESTAMPDIFF(SQL_TSI_QUARTER,%2,%3)</formula>
+      <formula part='month'>TIMESTAMPDIFF(SQL_TSI_MONTH,%2,%3)</formula>
+      <formula part='dayofyear'>TIMESTAMPDIFF(SQL_TSI_DAY,%2,%3)</formula>
+      <formula part='day'>TIMESTAMPDIFF(SQL_TSI_DAY,%2,%3)</formula>
+      <formula part='weekday'>TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP))</formula>
+      <formula part='week'>TIMESTAMPDIFF(SQL_TSI_WEEK,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP))</formula>
+      <formula part='hour'>TIMESTAMPDIFF(SQL_TSI_HOUR,%2,%3)</formula>
+      <formula part='minute'>TIMESTAMPDIFF(SQL_TSI_MINUTE,%2,%3)</formula>
+      <formula part='second'>TIMESTAMPDIFF(SQL_TSI_SECOND,%2,%3)</formula>
       <argument type='localstr' />
       <argument type='date' />
       <argument type='datetime' />
     </date-function>
     <date-function name='DATEDIFF' return-type='int'>
-      <formula part='year'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_YEAR,CAST(%2 AS DATE),CAST(%3 AS DATE)) END) END</formula>
-      <formula part='quarter'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_QUARTER,CAST(%2 AS DATE),CAST(%3 AS DATE)) END) END</formula>
-      <formula part='month'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_MONTH,CAST(%2 AS DATE),CAST(%3 AS DATE)) END ) END</formula>
-      <formula part='dayofyear'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS DATE),CAST(%3 AS DATE)) END ) END</formula>
-      <formula part='day'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS DATE),CAST(%3 AS DATE)) END ) END</formula>
-      <formula part='weekday'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS DATE),CAST(%3 AS DATE)) END ) END</formula>
-      <formula part='week'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_WEEK,CAST(%2 AS DATE),CAST(%3 AS DATE)) END ) END</formula>
-      <formula part='hour'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_HOUR,CAST(%2 AS DATE),CAST(%3 AS DATE)) END ) END</formula>
-      <formula part='minute'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_MINUTE,CAST(%2 AS DATE),CAST(%3 AS DATE)) END ) END</formula>
-      <formula part='second'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_SECOND,CAST(%2 AS DATE),CAST(%3 AS DATE)) END ) END</formula>
+      <formula part='year'>TIMESTAMPDIFF(SQL_TSI_YEAR,%2,%3)</formula>
+      <formula part='quarter'>TIMESTAMPDIFF(SQL_TSI_QUARTER,%2,%3)</formula>
+      <formula part='month'>TIMESTAMPDIFF(SQL_TSI_MONTH,%2,%3)</formula>
+      <formula part='dayofyear'>TIMESTAMPDIFF(SQL_TSI_DAY,%2,%3)</formula>
+      <formula part='day'>TIMESTAMPDIFF(SQL_TSI_DAY,%2,%3)</formula>
+      <formula part='weekday'>TIMESTAMPDIFF(SQL_TSI_DAY,%2,%3)</formula>
+      <formula part='week'>CAST( TRUNCATE( TIMESTAMPDIFF(SQL_TSI_DAY, TIMESTAMPADD(SQL_TSI_DAY,(-1 * CAST( MOD((7 +  DAYOFWEEK(%2)), 7) AS INT)),CAST(%2 AS DATE)), TIMESTAMPADD(SQL_TSI_DAY,(-1 * CAST( MOD((7 +  DAYOFWEEK(%3)), 7) AS INT)),CAST(%3 AS DATE))) / 7,0) AS INTEGER)</formula>
+      <formula part='hour'>TIMESTAMPDIFF(SQL_TSI_HOUR,%2,%3)</formula>
+      <formula part='minute'>TIMESTAMPDIFF(SQL_TSI_MINUTE,%2,%3)</formula>
+      <formula part='second'>TIMESTAMPDIFF(SQL_TSI_SECOND,%2,%3)</formula>
       <argument type='localstr' />
       <argument type='date' />
       <argument type='date' />
     </date-function>
     <date-function name='DATEDIFF' return-type='int'>
-      <formula part='year'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_YEAR,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END) END</formula>
-      <formula part='quarter'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_QUARTER,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END) END</formula>
-      <formula part='month'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_MONTH,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='dayofyear'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='day'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='weekday'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='week'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_WEEK,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='hour'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_HOUR,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='minute'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_MINUTE,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='second'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_SECOND,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
+      <formula part='year'>TIMESTAMPDIFF(SQL_TSI_YEAR,%2,%3)</formula>
+      <formula part='quarter'>TIMESTAMPDIFF(SQL_TSI_QUARTER,%2,%3)</formula>
+      <formula part='month'>TIMESTAMPDIFF(SQL_TSI_MONTH,%2,%3)</formula>
+      <formula part='dayofyear'>TIMESTAMPDIFF(SQL_TSI_DAY,%2,%3)</formula>
+      <formula part='day'>TIMESTAMPDIFF(SQL_TSI_DAY,%2,%3)</formula>
+      <formula part='weekday'>TIMESTAMPDIFF(SQL_TSI_DAY,%2,%3)</formula>
+      <formula part='week'>CAST( TRUNCATE( TIMESTAMPDIFF(SQL_TSI_DAY, TIMESTAMPADD(SQL_TSI_DAY,(-1 * CAST( MOD((7 + DAYOFWEEK(%2) + (CASE UPPER(CAST(%4 AS CHAR)) WHEN 'SUNDAY' THEN 1 ELSE -3 END)), 7) AS INT)),CAST(%2 AS DATE)), TIMESTAMPADD(SQL_TSI_DAY,(-1 * CAST( MOD((7 +  DAYOFWEEK(%3) + (CASE UPPER(CAST(%4 AS CHAR)) WHEN 'SUNDAY' THEN 2 ELSE -3 END)), 7) AS INT)),CAST(%3 AS DATE))) / 7,0) AS INTEGER)</formula>
+      <formula part='hour'>TIMESTAMPDIFF(SQL_TSI_HOUR,%2,%3)</formula>
+      <formula part='minute'>TIMESTAMPDIFF(SQL_TSI_MINUTE,%2,%3)</formula>
+      <formula part='second'>TIMESTAMPDIFF(SQL_TSI_SECOND,%2,%3)</formula>
       <argument type='localstr' />
       <argument type='datetime' />
       <argument type='datetime' />
       <argument type='localstr' />
     </date-function>
     <date-function name='DATEDIFF' return-type='int'>
-      <formula part='year'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_YEAR,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END) END</formula>
-      <formula part='quarter'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_QUARTER,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END) END</formula>
-      <formula part='month'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_MONTH,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='dayofyear'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='day'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='weekday'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='week'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_WEEK,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='hour'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_HOUR,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='minute'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_MINUTE,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
+      <formula part='year'>TIMESTAMPDIFF(SQL_TSI_YEAR,%2,%3)</formula>
+      <formula part='quarter'>TIMESTAMPDIFF(SQL_TSI_QUARTER,%2,%3)</formula>
+      <formula part='month'>TIMESTAMPDIFF(SQL_TSI_MONTH,%2,%3)</formula>
+      <formula part='dayofyear'>TIMESTAMPDIFF(SQL_TSI_DAY,%2,%3)</formula>
+      <formula part='day'>TIMESTAMPDIFF(SQL_TSI_DAY,%2,%3)</formula>
+      <formula part='weekday'>TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP))</formula>
+      <formula part='week'>TIMESTAMPDIFF(SQL_TSI_WEEK,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP))</formula>
+      <formula part='hour'>TIMESTAMPDIFF(SQL_TSI_HOUR,%2,%3)</formula>
+      <formula part='minute'>TIMESTAMPDIFF(SQL_TSI_MINUTE,%2,%3)</formula>
+      <formula part='second'>TIMESTAMPDIFF(SQL_TSI_SECOND,%2,%3)</formula>
       <argument type='datetime' />
       <argument type='date' />
       <argument type='localstr' />
     </date-function>
     <date-function name='DATEDIFF' return-type='int'>
-      <formula part='year'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_YEAR,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END) END</formula>
-      <formula part='quarter'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_QUARTER,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END) END</formula>
-      <formula part='month'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_MONTH,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='dayofyear'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='day'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='weekday'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='week'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_WEEK,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='hour'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_HOUR,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='minute'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_MINUTE,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
-      <formula part='second'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_SECOND,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP)) END ) END</formula>
+      <formula part='year'>TIMESTAMPDIFF(SQL_TSI_YEAR,%2,%3)</formula>
+      <formula part='quarter'>TIMESTAMPDIFF(SQL_TSI_QUARTER,%2,%3)</formula>
+      <formula part='month'>TIMESTAMPDIFF(SQL_TSI_MONTH,%2,%3)</formula>
+      <formula part='dayofyear'>TIMESTAMPDIFF(SQL_TSI_DAY,%2,%3)</formula>
+      <formula part='day'>TIMESTAMPDIFF(SQL_TSI_DAY,%2,%3)</formula>
+      <formula part='weekday'>TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP))</formula>
+      <formula part='week'>TIMESTAMPDIFF(SQL_TSI_WEEK,CAST(%2 AS TIMESTAMP),CAST(%3 AS TIMESTAMP))</formula>
+      <formula part='hour'>TIMESTAMPDIFF(SQL_TSI_HOUR,%2,%3)</formula>
+      <formula part='minute'>TIMESTAMPDIFF(SQL_TSI_MINUTE,%2,%3)</formula>
+      <formula part='second'>TIMESTAMPDIFF(SQL_TSI_SECOND,%2,%3)</formula>
       <argument type='localstr' />
       <argument type='date' />
       <argument type='datetime' />
       <argument type='localstr' />
     </date-function>
     <date-function name='DATEDIFF' return-type='int'>
-      <formula part='year'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_YEAR,CAST(%2 AS DATE),CAST(%3 AS DATE)) END) END</formula>
-      <formula part='quarter'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_QUARTER,CAST(%2 AS DATE),CAST(%3 AS DATE)) END) END</formula>
-      <formula part='month'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_MONTH,CAST(%2 AS DATE),CAST(%3 AS DATE)) END ) END</formula>
-      <formula part='dayofyear'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS DATE),CAST(%3 AS DATE)) END ) END</formula>
-      <formula part='day'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS DATE),CAST(%3 AS DATE)) END ) END</formula>
-      <formula part='weekday'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_DAY,CAST(%2 AS DATE),CAST(%3 AS DATE)) END ) END</formula>
-      <formula part='week'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_WEEK,CAST(%2 AS DATE),CAST(%3 AS DATE)) END ) END</formula>
-      <formula part='hour'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_HOUR,CAST(%2 AS DATE),CAST(%3 AS DATE)) END ) END</formula>
-      <formula part='minute'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_MINUTE,CAST(%2 AS DATE),CAST(%3 AS DATE)) END ) END</formula>
-      <formula part='second'>CASE %2 WHEN NULL THEN NULL ELSE (CASE %3 WHEN NULL THEN NULL ELSE TIMESTAMPDIFF(SQL_TSI_SECOND,CAST(%2 AS DATE),CAST(%3 AS DATE)) END ) END</formula>
+      <formula part='year'>TIMESTAMPDIFF(SQL_TSI_YEAR,%2,%3)</formula>
+      <formula part='quarter'>TIMESTAMPDIFF(SQL_TSI_QUARTER,%2,%3)</formula>
+      <formula part='month'>TIMESTAMPDIFF(SQL_TSI_MONTH,%2,%3)</formula>
+      <formula part='dayofyear'>TIMESTAMPDIFF(SQL_TSI_DAY,%2,%3)</formula>
+      <formula part='day'>TIMESTAMPDIFF(SQL_TSI_DAY,%2,%3)</formula>
+      <formula part='weekday'>TIMESTAMPDIFF(SQL_TSI_DAY,%2,%3)</formula>
+      <formula part='week'>CAST( TRUNCATE( TIMESTAMPDIFF(SQL_TSI_DAY, TIMESTAMPADD(SQL_TSI_DAY,(-1 * CAST( MOD((7 + DAYOFWEEK(%2) + (CASE UPPER(CAST(%4 AS CHAR)) WHEN 'SUNDAY' THEN 1 ELSE -3 END)), 7) AS INT)),CAST(%2 AS DATE)), TIMESTAMPADD(SQL_TSI_DAY,(-1 * CAST( MOD((7 +  DAYOFWEEK(%3) + (CASE UPPER(CAST(%4 AS CHAR)) WHEN 'SUNDAY' THEN 2 ELSE -3 END)), 7) AS INT)),CAST(%3 AS DATE))) / 7,0) AS INTEGER)</formula>
+      <formula part='hour'>TIMESTAMPDIFF(SQL_TSI_HOUR,%2,%3)</formula>
+      <formula part='minute'>TIMESTAMPDIFF(SQL_TSI_MINUTE,%2,%3)</formula>
+      <formula part='second'>TIMESTAMPDIFF(SQL_TSI_SECOND,%2,%3)</formula>
       <argument type='localstr' />
       <argument type='date' />
       <argument type='date' />
@@ -1518,11 +1516,11 @@
       <formula>CAST(DATEPART(&apos;%1&apos;,%2) AS CHAR)</formula>
       <formula part='year'>CAST(DATEPART(&apos;yy&apos;,%2) AS CHAR)</formula>
       <formula part='quarter'>CAST(DATEPART(&apos;qq&apos;,%2) AS CHAR)</formula>
-      <formula part='month'>CASE %2 WHEN NULL THEN NULL ELSE MONTHNAME(%2) END</formula>
+      <formula part='month'>MONTHNAME(%2)</formula>
       <formula part='dayofyear'>XDMP_YEARDAY_FROM_DATE(CAST(%2 AS DATE))</formula>
       <formula part='day'>CAST(CAST(TRUNCATE(EXTRACT(DAY FROM CAST(%2 AS TIMESTAMP)),0) AS INTEGER) AS CHAR)</formula>
-      <formula part='weekday'>CASE %2 WHEN NULL THEN NULL ELSE DAYNAME(%2) END</formula>
-      <formula part='week'>CAST(WEEK(%2) AS CHAR)</formula>
+      <formula part='weekday'>DAYNAME(%2)</formula>
+      <formula part='week'>CAST(CAST(TRUNCATE((6 + DAYOFYEAR(%2) + (MOD((7 + DAYOFWEEK(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(%2) - 1)),0) AS INTEGER),CAST(%2 AS DATE)))), 7))) / 7,0) AS INTEGER) AS CHAR)</formula>
       <formula part='hour'>CAST(CAST(TRUNCATE(EXTRACT(HOUR FROM %2),0) AS INTEGER) AS CHAR)</formula>
       <formula part='minute'>CAST(CAST(TRUNCATE(EXTRACT(MINUTE FROM %2),0) AS INTEGER) AS CHAR)</formula>
       <formula part='second'>CAST(CAST(TRUNCATE(EXTRACT(SECOND FROM %2),0) AS INTEGER) AS CHAR)</formula>
@@ -1533,39 +1531,40 @@
       <formula>CAST(DATEPART(&apos;%1&apos;,%2) AS CHAR)</formula>
       <formula part='year'>CAST(DATEPART(&apos;yy&apos;,%2) AS CHAR)</formula>
       <formula part='quarter'>CAST(DATEPART(&apos;qq&apos;,%2) AS CHAR)</formula>
-      <formula part='month'>CASE WHEN %2 IS NULL THEN NULL ELSE MONTHNAME(CAST(%2 AS DATE)) END</formula>
+      <formula part='month'>MONTHNAME(%2)</formula>
       <formula part='dayofyear'>XDMP_YEARDAY_FROM_DATE(CAST(%2 AS DATE))</formula>
       <formula part='day'>EXTRACT(DAY FROM (CAST(%2 AS DATE)))</formula>
-      <formula part='weekday'>CASE WHEN %2 IS NULL THEN NULL ELSE DAYNAME(CAST(%2 AS DATE)) END</formula>
-      <formula part='week'>CAST(WEEK(CAST(%2 AS DATE)) AS CHAR)</formula>
-      <formula part='hour'>CAST(CAST(TRUNCATE(EXTRACT(HOUR FROM CAST(CAST(%2 AS DATE) AS TIMESTAMP)),0) AS INTEGER) AS CHAR)</formula>
-      <formula part='minute'>CAST(CAST(TRUNCATE(EXTRACT(MINUTE FROM CAST(CAST(%2 AS DATE) AS TIMESTAMP)),0) AS INTEGER) AS CHAR)</formula>
-      <formula part='second'>CAST(CAST(TRUNCATE(EXTRACT(SECOND FROM CAST(CAST(%2 AS DATE) AS TIMESTAMP)),0) AS INTEGER) AS CHAR)</formula>
+      <formula part='weekday'>DAYNAME(CAST(%2 AS DATE))</formula>
+      <formula part='week'>CAST(CAST(TRUNCATE((6 + DAYOFYEAR(%2) + (MOD((7 + DAYOFWEEK(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(%2) - 1)),0) AS INTEGER),CAST(%2 AS DATE)))), 7))) / 7,0) AS INTEGER) AS CHAR)</formula>
+      <formula part='hour'>CAST(CAST(TRUNCATE(EXTRACT(HOUR FROM %2),0) AS INTEGER) AS CHAR)</formula>
+      <formula part='minute'>CAST(CAST(TRUNCATE(EXTRACT(MINUTE FROM %2),0) AS INTEGER) AS CHAR)</formula>
+      <formula part='second'>CAST(CAST(TRUNCATE(EXTRACT(SECOND FROM %2),0) AS INTEGER) AS CHAR)</formula>
       <argument type='localstr' />
       <argument type='date' />
     </date-function>
     <date-function name='DATENAME' return-type='str'>
       <formula part='year'>CAST(DATEPART(&apos;yy&apos;,%2) AS CHAR)</formula>
       <formula part='quarter'>CAST(DATEPART(&apos;qq&apos;,%2) AS CHAR)</formula>
-      <formula part='month'>CASE %2 WHEN NULL THEN NULL ELSE MONTHNAME(%2) END</formula>
+      <formula part='month'>MONTHNAME(%2)</formula>
       <formula part='dayofyear'>XDMP_YEARDAY_FROM_DATE(CAST(%2 AS DATE))</formula>
       <formula part='day'>CAST(CAST(TRUNCATE(EXTRACT(DAY FROM CAST(%2 AS TIMESTAMP)),0) AS INTEGER) AS CHAR)</formula>
-      <formula part='weekday'>CASE %2 WHEN NULL THEN NULL ELSE DAYNAME(%2) END</formula>
-      <formula part='week'>CAST(WEEK(%2) AS CHAR)</formula>
+      <formula part='weekday'>DAYNAME(%2)</formula>
+      <formula part='week'>CAST(CAST(TRUNCATE((6 + DAYOFYEAR(%2) + (MOD((7 + DAYOFWEEK(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(%2) - (CASE UPPER(CAST(%3 AS CHAR)) WHEN 'SUNDAY' THEN 1 ELSE 0 END) )),0) AS INTEGER),CAST(%2 AS DATE)))), 7))) / 7,0) AS INTEGER) AS CHAR)</formula>
       <formula part='hour'>CAST(CAST(TRUNCATE(EXTRACT(HOUR FROM %2),0) AS INTEGER) AS CHAR)</formula>
       <formula part='minute'>CAST(CAST(TRUNCATE(EXTRACT(MINUTE FROM %2),0) AS INTEGER) AS CHAR)</formula>
-      <formula part='second'>CAST(CAST(TRUNCATE(EXTRACT(SECOND FROM %2),0) AS INTEGER) AS CHAR)</formula>      <argument type='localstr' />
+      <formula part='second'>CAST(CAST(TRUNCATE(EXTRACT(SECOND FROM %2),0) AS INTEGER) AS CHAR)</formula>
+      <argument type='localstr' />
       <argument type='datetime' />
       <argument type='localstr' />
     </date-function>
     <date-function name='DATENAME' return-type='str'>
       <formula part='year'>CAST(DATEPART(&apos;yy&apos;,%2) AS CHAR)</formula>
       <formula part='quarter'>CAST(DATEPART(&apos;qq&apos;,%2) AS CHAR)</formula>
-      <formula part='month'>CASE WHEN %2 IS NULL THEN NULL ELSE MONTHNAME(CAST(%2 AS DATE)) END</formula>
+      <formula part='month'>MONTHNAME(%2)</formula>
       <formula part='dayofyear'>XDMP_YEARDAY_FROM_DATE(CAST(%2 AS DATE))</formula>
       <formula part='day'>EXTRACT(DAY FROM (CAST(%2 AS DATE)))</formula>
-      <formula part='weekday'>CASE WHEN %2 IS NULL THEN NULL ELSE DAYNAME(CAST(%2 AS DATE)) END</formula>
-      <formula part='week'>CAST(WEEK(CAST(%2 AS DATE)) AS CHAR)</formula>
+      <formula part='weekday'>DAYNAME(CAST(%2 AS DATE))</formula>
+      <formula part='week'>CAST(CAST(TRUNCATE((6 + DAYOFYEAR(%2) + (MOD((7 + DAYOFWEEK(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(%2) - (CASE UPPER(CAST(%3 AS CHAR)) WHEN 'SUNDAY' THEN 1 ELSE 0 END) )),0) AS INTEGER),CAST(%2 AS DATE)))), 7))) / 7,0) AS INTEGER) AS CHAR) </formula>
       <formula part='hour'>CAST(CAST(TRUNCATE(EXTRACT(HOUR FROM CAST(CAST(%2 AS DATE) AS TIMESTAMP)),0) AS INTEGER) AS CHAR)</formula>
       <formula part='minute'>CAST(CAST(TRUNCATE(EXTRACT(MINUTE FROM CAST(CAST(%2 AS DATE) AS TIMESTAMP)),0) AS INTEGER) AS CHAR)</formula>
       <formula part='second'>CAST(CAST(TRUNCATE(EXTRACT(SECOND FROM CAST(CAST(%2 AS DATE) AS TIMESTAMP)),0) AS INTEGER) AS CHAR)</formula>
@@ -1584,8 +1583,8 @@
       <formula part='month'>CAST(MONTH(CAST(%2 AS TIMESTAMP)) AS INTEGER)</formula>
       <formula part='dayofyear'>DAYOFYEAR(CAST(%2 AS TIMESTAMP))</formula>
       <formula part='day'>CAST(DAY(CAST(%2 AS TIMESTAMP)) AS INTEGER)</formula>
-      <formula part='weekday'>DAYOFWEEK(CAST(%2 AS TIMESTAMP))</formula>
-      <formula part='week'>WEEK(CAST(%2 AS TIMESTAMP))</formula>
+      <formula part='weekday'>CAST(MOD((7 + DAYOFWEEK(%2)), 7) + 1 AS INT)</formula>
+      <formula part='week'>CAST(TRUNCATE((6 + DAYOFYEAR(%2) + (MOD((7 + DAYOFWEEK(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(%2) - 1)),0) AS INTEGER),CAST(%2 AS DATE)))), 7))) / 7,0) AS INTEGER)</formula>
       <formula part='hour'>HOUR(CAST(%2 AS TIMESTAMP))</formula>
       <formula part='minute'>MINUTE(CAST(%2 AS TIMESTAMP))</formula>
       <formula part='second'>SECOND(CAST(%2 AS TIMESTAMP))</formula>
@@ -1598,8 +1597,8 @@
       <formula part='month'>CAST(MONTH(CAST(%2 AS DATE)) AS INTEGER)</formula>
       <formula part='dayofyear'>DAYOFYEAR(CAST(%2 AS DATE))</formula>
       <formula part='day'>CAST(DAY(CAST(%2 AS DATE)) AS INTEGER)</formula>
-      <formula part='weekday'>DAYOFWEEK(CAST(%2 AS DATE))</formula>
-      <formula part='week'>WEEK(CAST(%2 AS DATE))</formula>
+      <formula part='weekday'>CAST(MOD((7 + DAYOFWEEK(%2)), 7) + 1 AS INT)</formula>
+      <formula part='week'>CAST(TRUNCATE((6 + DAYOFYEAR(%2) + (MOD((7 + DAYOFWEEK(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(%2) - 1)),0) AS INTEGER),CAST(%2 AS DATE)))), 7))) / 7,0) AS INTEGER)</formula>
       <formula part='hour'>HOUR(%2)</formula>
       <formula part='minute'>MINUTE(%2)</formula>
       <formula part='second'>SECOND(%2)</formula>
@@ -1613,7 +1612,7 @@
       <formula part='dayofyear'>DAYOFYEAR(CAST(%2 AS TIMESTAMP))</formula>
       <formula part='day'>CAST(DAY(CAST(%2 AS TIMESTAMP)) AS INTEGER)</formula>
       <formula part='weekday'>DAYOFWEEK(CAST(%2 AS TIMESTAMP))</formula>
-      <formula part='week'>WEEK(CAST(%2 AS TIMESTAMP))</formula>
+      <formula part='week'>CAST(CAST(TRUNCATE((6 + DAYOFYEAR(%2) + (MOD((7 + DAYOFWEEK(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(%2) - (CASE UPPER(CAST(%3 AS CHAR)) WHEN 'SUNDAY' THEN 1 ELSE 0 END) )),0) AS INTEGER),CAST(%2 AS DATE)))), 7))) / 7,0) AS INTEGER) AS CHAR)</formula>
       <formula part='hour'>HOUR(CAST(%2 AS TIMESTAMP))</formula>
       <formula part='minute'>MINUTE(CAST(%2 AS TIMESTAMP))</formula>
       <formula part='second'>SECOND(CAST(%2 AS TIMESTAMP))</formula>
@@ -1628,7 +1627,7 @@
       <formula part='dayofyear'>DAYOFYEAR(CAST(%2 AS DATE))</formula>
       <formula part='day'>CAST(DAY(CAST(%2 AS DATE)) AS INTEGER)</formula>
       <formula part='weekday'>DAYOFWEEK(CAST(%2 AS DATE))</formula>
-      <formula part='week'>WEEK(CAST(%2 AS DATE))</formula>
+      <formula part='week'>CAST(CAST(TRUNCATE((6 + DAYOFYEAR(%2) + (MOD((7 + DAYOFWEEK(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(%2) - (CASE UPPER(CAST(%3 AS CHAR)) WHEN 'SUNDAY' THEN 1 ELSE 0 END) )),0) AS INTEGER),CAST(%2 AS DATE)))), 7))) / 7,0) AS INTEGER) AS CHAR)</formula>
       <formula part='hour'>HOUR(%2)</formula>
       <formula part='minute'>MINUTE(%2)</formula>
       <formula part='second'>SECOND(%2)</formula>
@@ -1637,59 +1636,59 @@
       <argument type='localstr' />
     </date-function>
     <date-function name='DATETRUNC' return-type='datetime'>
-      <formula part='year'>CASE %2 WHEN NULL THEN NULL ELSE CAST(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS TIMESTAMP)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS TIMESTAMP) AS DATE)) AS TIMESTAMP) END</formula>
-      <formula part='quarter'>CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_MONTH,CAST(TRUNCATE((3 * (CAST(TRUNCATE(QUARTER(CAST(%2 AS TIMESTAMP)),0) AS INTEGER) - 1)),0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS TIMESTAMP)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS TIMESTAMP) AS TIMESTAMP))) END</formula>
-      <formula part='month'>CASE %2 WHEN NULL THEN NULL ELSE CAST(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (EXTRACT(DAY FROM CAST(%2 AS TIMESTAMP)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS TIMESTAMP) AS DATE)) AS TIMESTAMP) END</formula>
+      <formula part='year'>CAST(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS TIMESTAMP)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS TIMESTAMP) AS DATE)) AS TIMESTAMP)</formula>
+      <formula part='quarter'>TIMESTAMPADD(SQL_TSI_MONTH,CAST(TRUNCATE((3 * (CAST(TRUNCATE(QUARTER(CAST(%2 AS TIMESTAMP)),0) AS INTEGER) - 1)),0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS TIMESTAMP)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS TIMESTAMP) AS TIMESTAMP)))</formula>
+      <formula part='month'>CAST(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (EXTRACT(DAY FROM CAST(%2 AS TIMESTAMP)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS TIMESTAMP) AS DATE)) AS TIMESTAMP)</formula>
       <formula part='dayofyear'>CAST(CAST(CAST(%2 AS TIMESTAMP) AS DATE) AS TIMESTAMP)</formula>
       <formula part='day'>CAST(CAST(CAST(%2 AS TIMESTAMP) AS DATE) AS TIMESTAMP)</formula>
       <formula part='weekday'>CAST(CAST(CAST(%2 AS TIMESTAMP) AS DATE) AS TIMESTAMP)</formula>
-      <formula part='week'>CASE %2 WHEN NULL THEN NULL ELSE CAST(TIMESTAMPADD(SQL_TSI_DAY,(-1 * (DAYOFWEEK(CAST(%2 AS TIMESTAMP)) - 1)),CAST(CAST(%2 AS TIMESTAMP) AS DATE)) AS TIMESTAMP) END</formula>
-      <formula part='hour'>CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_HOUR,EXTRACT(HOUR FROM CAST(%2 AS TIMESTAMP)),CAST(CAST(CAST(%2 AS TIMESTAMP) AS DATE) AS TIMESTAMP)) END</formula>
-      <formula part='minute'>CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_MINUTE,EXTRACT(MINUTE FROM CAST(%2 AS TIMESTAMP)),TIMESTAMPADD(SQL_TSI_HOUR,EXTRACT(HOUR FROM CAST(%2 AS TIMESTAMP)),CAST(CAST(CAST(%2 AS TIMESTAMP) AS DATE) AS TIMESTAMP))) END</formula>
-      <formula part='second'>CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_SECOND,CAST(EXTRACT(SECOND FROM CAST(%2 AS TIMESTAMP)) AS INTEGER), TIMESTAMPADD(SQL_TSI_MINUTE,EXTRACT(MINUTE FROM CAST(%2 AS TIMESTAMP)),TIMESTAMPADD(SQL_TSI_HOUR,EXTRACT(HOUR FROM CAST(%2 AS TIMESTAMP)),CAST(CAST(CAST(%2 AS TIMESTAMP) AS DATE) AS TIMESTAMP)))) END</formula>
+      <formula part='week'>CAST(TIMESTAMPADD(SQL_TSI_DAY,CAST(-1 * (MOD((7 + DAYOFWEEK(%2)), 7)) AS INT),CAST(%2 AS DATE)) AS TIMESTAMP)</formula>
+      <formula part='hour'>TIMESTAMPADD(SQL_TSI_HOUR,EXTRACT(HOUR FROM %2),CAST(CAST(%2 AS DATE) AS TIMESTAMP))</formula>
+      <formula part='minute'>TIMESTAMPADD(SQL_TSI_MINUTE,EXTRACT(MINUTE FROM %2),TIMESTAMPADD(SQL_TSI_HOUR,EXTRACT(HOUR FROM %2),CAST(CAST(%2 AS DATE) AS TIMESTAMP)))</formula>
+      <formula part='second'>%2</formula>
       <argument type='localstr' />
       <argument type='datetime' />
     </date-function>
     <date-function name='DATETRUNC' return-type='datetime'>
-      <formula part='year'>CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS DATE)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS DATE) AS DATE)) END</formula>
-      <formula part='quarter'>CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_MONTH,CAST(TRUNCATE((3 * (CAST(TRUNCATE(QUARTER(CAST(%2 AS DATE)),0) AS INTEGER) - 1)),0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS DATE)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS DATE) AS DATE))) END</formula>
-      <formula part='month'>CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (EXTRACT(DAY FROM CAST(%2 AS DATE)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS DATE) AS DATE)) END</formula>
+      <formula part='year'>TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS DATE)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS DATE) AS DATE))</formula>
+      <formula part='quarter'>TIMESTAMPADD(SQL_TSI_MONTH,CAST(TRUNCATE((3 * (CAST(TRUNCATE(QUARTER(CAST(%2 AS DATE)),0) AS INTEGER) - 1)),0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS DATE)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS DATE) AS DATE)))</formula>
+      <formula part='month'>TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (EXTRACT(DAY FROM CAST(%2 AS DATE)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS DATE) AS DATE))</formula>
       <formula part='dayofyear'>CAST(CAST(%2 AS DATE) AS TIMESTAMP)</formula>
       <formula part='day'>CAST(CAST(%2 AS DATE) AS TIMESTAMP)</formula>
       <formula part='weekday'>CAST(CAST(%2 AS DATE) AS TIMESTAMP)</formula>
-      <formula part='week'>CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_DAY,(-1 * (DAYOFWEEK(CAST(%2 AS DATE)) - 1)),CAST(CAST(%2 AS DATE) AS TIMESTAMP)) END</formula>
-      <formula part='hour'>CASE %2 WHEN NULL THEN NULL ELSE CAST(CAST(%2 AS DATE) AS TIMESTAMP) END</formula>
-      <formula part='minute'>CASE %2 WHEN NULL THEN NULL ELSE CAST(CAST(%2 AS DATE) AS TIMESTAMP) END</formula>
-      <formula part='second'>CASE %2 WHEN NULL THEN NULL ELSE CAST(CAST(%2 AS DATE) AS TIMESTAMP) END</formula>
+      <formula part='week'>CAST(TIMESTAMPADD(SQL_TSI_DAY,CAST(-1 * (MOD((7 + DAYOFWEEK(%2)), 7)) AS INT),CAST(%2 AS DATE)) AS TIMESTAMP)</formula>
+      <formula part='hour'>TIMESTAMPADD(SQL_TSI_HOUR,EXTRACT(HOUR FROM %2),CAST(CAST(%2 AS DATE) AS TIMESTAMP))</formula>
+      <formula part='minute'>TIMESTAMPADD(SQL_TSI_MINUTE,EXTRACT(MINUTE FROM %2),TIMESTAMPADD(SQL_TSI_HOUR,EXTRACT(HOUR FROM %2),CAST(CAST(%2 AS DATE) AS TIMESTAMP)))</formula>
+      <formula part='second'>CAST(%2 AS TIMESTAMP)</formula>
       <argument type='localstr' />
       <argument type='date' />
     </date-function>
     <date-function name='DATETRUNC' return-type='datetime'>
-      <formula part='year'>CASE %2 WHEN NULL THEN NULL ELSE CAST(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS TIMESTAMP)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS TIMESTAMP) AS DATE)) AS TIMESTAMP) END</formula>
-      <formula part='quarter'>CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_MONTH,CAST(TRUNCATE((3 * (CAST(TRUNCATE(QUARTER(CAST(%2 AS TIMESTAMP)),0) AS INTEGER) - 1)),0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS TIMESTAMP)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS TIMESTAMP) AS TIMESTAMP))) END</formula>
-      <formula part='month'>CASE %2 WHEN NULL THEN NULL ELSE CAST(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (EXTRACT(DAY FROM CAST(%2 AS TIMESTAMP)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS TIMESTAMP) AS DATE)) AS TIMESTAMP) END</formula>
-      <formula part='dayofyear'>CAST(CAST(CAST(%2 AS TIMESTAMP) AS DATE) AS TIMESTAMP)</formula>
-      <formula part='day'>CAST(CAST(CAST(%2 AS TIMESTAMP) AS DATE) AS TIMESTAMP)</formula>
+      <formula part='year'>CAST(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS TIMESTAMP)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS TIMESTAMP) AS DATE)) AS TIMESTAMP)</formula>
+      <formula part='quarter'>TIMESTAMPADD(SQL_TSI_MONTH,CAST(TRUNCATE((3 * (CAST(TRUNCATE(QUARTER(CAST(%2 AS TIMESTAMP)),0) AS INTEGER) - 1)),0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS TIMESTAMP)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS TIMESTAMP) AS TIMESTAMP)))</formula>
+      <formula part='month'>CAST(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (EXTRACT(DAY FROM CAST(%2 AS TIMESTAMP)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS TIMESTAMP) AS DATE)) AS TIMESTAMP)</formula>
+      <formula part='dayofyear'>CAST(CAST(%2 AS DATE) AS TIMESTAMP)</formula>
+      <formula part='day'>CAST(CAST(%2 AS DATE) AS TIMESTAMP)</formula>
       <formula part='weekday'>CAST(CAST(CAST(%2 AS TIMESTAMP) AS DATE) AS TIMESTAMP)</formula>
-      <formula part='week'>CASE %2 WHEN NULL THEN NULL ELSE CAST(TIMESTAMPADD(SQL_TSI_DAY,(-1 * (DAYOFWEEK(CAST(%2 AS TIMESTAMP)) - 1)),CAST(CAST(%2 AS TIMESTAMP) AS DATE)) AS TIMESTAMP) END</formula>
-      <formula part='hour'>CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_HOUR,EXTRACT(HOUR FROM CAST(%2 AS TIMESTAMP)),CAST(CAST(CAST(%2 AS TIMESTAMP) AS DATE) AS TIMESTAMP)) END</formula>
-      <formula part='minute'>CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_MINUTE,EXTRACT(MINUTE FROM CAST(%2 AS TIMESTAMP)),TIMESTAMPADD(SQL_TSI_HOUR,EXTRACT(HOUR FROM CAST(%2 AS TIMESTAMP)),CAST(CAST(CAST(%2 AS TIMESTAMP) AS DATE) AS TIMESTAMP))) END</formula>
-      <formula part='second'>CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_SECOND,CAST(EXTRACT(SECOND FROM CAST(%2 AS TIMESTAMP)) AS INTEGER), TIMESTAMPADD(SQL_TSI_MINUTE,EXTRACT(MINUTE FROM CAST(%2 AS TIMESTAMP)),TIMESTAMPADD(SQL_TSI_HOUR,EXTRACT(HOUR FROM CAST(%2 AS TIMESTAMP)),CAST(CAST(CAST(%2 AS TIMESTAMP) AS DATE) AS TIMESTAMP)))) END</formula>
+      <formula part='week'>CAST(TIMESTAMPADD(SQL_TSI_DAY,CAST(-1 * (MOD((7 + DAYOFWEEK(%2)), 7)) AS INT),CAST(%2 AS DATE)) AS TIMESTAMP)</formula>
+      <formula part='hour'>TIMESTAMPADD(SQL_TSI_HOUR,EXTRACT(HOUR FROM %2),CAST(CAST(%2 AS DATE) AS TIMESTAMP))</formula>
+      <formula part='minute'>TIMESTAMPADD(SQL_TSI_MINUTE,EXTRACT(MINUTE FROM %2),TIMESTAMPADD(SQL_TSI_HOUR,EXTRACT(HOUR FROM %2),CAST(CAST(%2 AS DATE) AS TIMESTAMP)))</formula>
+      <formula part='second'>CAST(%2 AS TIMESTAMP)</formula>
      <argument type='localstr' />
       <argument type='datetime' />
       <argument type='localstr' />
     </date-function>
     <date-function name='DATETRUNC' return-type='datetime'>
-      <formula part='year'>CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS DATE)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS DATE) AS DATE)) END</formula>
-      <formula part='quarter'>CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_MONTH,CAST(TRUNCATE((3 * (CAST(TRUNCATE(QUARTER(CAST(%2 AS DATE)),0) AS INTEGER) - 1)),0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS DATE)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS DATE) AS DATE))) END</formula>
-      <formula part='month'>CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (EXTRACT(DAY FROM CAST(%2 AS DATE)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS DATE) AS DATE)) END</formula>
-      <formula part='dayofyear'>CAST(CAST(%2 AS DATE) AS TIMESTAMP)</formula>
-      <formula part='day'>CAST(CAST(%2 AS DATE) AS TIMESTAMP)</formula>
-      <formula part='weekday'>CAST(CAST(%2 AS DATE) AS TIMESTAMP)</formula>
-      <formula part='week'>CASE %2 WHEN NULL THEN NULL ELSE TIMESTAMPADD(SQL_TSI_DAY,(-1 * (DAYOFWEEK(CAST(%2 AS DATE)) - 1)),CAST(CAST(%2 AS DATE) AS DATE)) END</formula>
-      <formula part='hour'>CASE %2 WHEN NULL THEN NULL ELSE CAST(CAST(%2 AS DATE) AS TIMESTAMP) END</formula>
-      <formula part='minute'>CASE %2 WHEN NULL THEN NULL ELSE CAST(CAST(%2 AS DATE) AS TIMESTAMP) END</formula>
-      <formula part='second'>CASE %2 WHEN NULL THEN NULL ELSE CAST(CAST(%2 AS DATE) AS TIMESTAMP) END</formula>
+      <formula part='year'>CAST(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS TIMESTAMP)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS TIMESTAMP) AS DATE)) AS TIMESTAMP)</formula>
+      <formula part='quarter'>TIMESTAMPADD(SQL_TSI_MONTH,CAST(TRUNCATE((3 * (CAST(TRUNCATE(QUARTER(CAST(%2 AS TIMESTAMP)),0) AS INTEGER) - 1)),0) AS INTEGER),TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (DAYOFYEAR(CAST(%2 AS TIMESTAMP)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS TIMESTAMP) AS TIMESTAMP)))</formula>
+      <formula part='month'>CAST(TIMESTAMPADD(SQL_TSI_DAY,CAST(TRUNCATE((-1 * (EXTRACT(DAY FROM CAST(%2 AS TIMESTAMP)) - 1)),0) AS INTEGER),CAST(CAST(%2 AS TIMESTAMP) AS DATE)) AS TIMESTAMP)</formula>
+      <formula part='dayofyear'>CAST(CAST(CAST(%2 AS TIMESTAMP) AS DATE) AS TIMESTAMP)</formula>
+      <formula part='day'>CAST(CAST(CAST(%2 AS TIMESTAMP) AS DATE) AS TIMESTAMP)</formula>
+      <formula part='weekday'>CAST(CAST(CAST(%2 AS TIMESTAMP) AS DATE) AS TIMESTAMP)</formula>
+      <formula part='week'>CAST(TIMESTAMPADD(SQL_TSI_DAY,(-1 * (DAYOFWEEK(CAST(%2 AS TIMESTAMP)) - 1)),CAST(CAST(%2 AS TIMESTAMP) AS DATE)) AS TIMESTAMP)</formula>
+      <formula part='hour'>TIMESTAMPADD(SQL_TSI_HOUR,EXTRACT(HOUR FROM %2),CAST(CAST(%2 AS DATE) AS TIMESTAMP))</formula>
+      <formula part='minute'>TIMESTAMPADD(SQL_TSI_MINUTE,EXTRACT(MINUTE FROM %2),TIMESTAMPADD(SQL_TSI_HOUR,EXTRACT(HOUR FROM %2),CAST(CAST(%2 AS DATE) AS TIMESTAMP)))</formula>
+      <formula part='second'>CAST(%2 AS TIMESTAMP)</formula>
       <argument type='localstr' />
       <argument type='date' />
       <argument type='localstr' />
@@ -1784,4 +1783,28 @@
       <argument type='str' />
     </remove-function>
   </function-map>
+  <sql-format>
+    <format-date-literal formula="CAST ('%1' AS DATE)"  format='yyyy-MM-dd' />
+    <format-datetime-literal formula="CAST ('%1' AS TIMESTAMP)" format='yyyy-MM-dd HH:mm:ss.SSS' />
+    <format-false literal='CAST(0 AS BOOLEAN)' predicate=''/>
+    <format-is-distinct value='Formula' />
+    <format-order-by value='Nulls' />
+    <format-select>
+      <part name='Select' value='SELECT %1' />
+      <part name='From' value='FROM %1' />
+      <part name='Where' value='WHERE %1' />
+      <part name='Group' value='GROUP BY %1' />
+      <part name='Having' value='HAVING %1' />
+      <part name='OrderBy' value='ORDER BY %1' />
+      <part name='Top' value='LIMIT %1' />
+    </format-select>
+    <format-true literal='CAST(1 AS BOOLEAN)' predicate=''/>
+    <start-of-week-offset value='7' />
+    <supported-joins>
+      <part name='Inner' />
+      <part name='Left' />
+      <part name='Right' />
+      <part name='Full' />
+    </supported-joins>
+  </sql-format>
 </dialect>
