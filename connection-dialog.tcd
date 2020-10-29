@@ -6,6 +6,6 @@
     </authentication-options>
     <has-databases value='false' />
     <port-prompt value="Port: " default="5432" />
-    <show-ssl-checkbox value="true" />
+    <show-ssl-checkbox value="false" />
   </connection-config>
 </connection-dialog>

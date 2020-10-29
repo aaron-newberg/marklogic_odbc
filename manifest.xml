@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8' ?>
 
-<connector-plugin class='marklogic_odbc' superclass='odbc' plugin-version='0.0.0' name='MarkLogic' version='20.1' min-version-tableau='2019.4'>
+<connector-plugin class='marklogic_odbc' superclass='odbc' plugin-version='0.0.0' name='MarkLogic' version='20.1' min-version-tableau='2020.3'>
   <vendor-information>
       <company name="MarkLogic"/>
       <support-link url="https://help.marklogic.com/"/>
